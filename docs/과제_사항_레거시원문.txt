@@ -1,0 +1,4124 @@
+[mysql]
+
+
+[메인 페이지]
+
+▶메인 페이지의 top부분을 누를 시 다시 메인페이지로 복귀하게 된다.
+▶로그인, 마이페이지, 로그아웃, 장바구니/관리메뉴를 left에 두었다.
+▶상품 검색을 main 우측 하단에 배치하였다.
+▶고객 게시판을 bottom에 위치
+>상품별
+
+
+
+▶각 상품별로 화면을 구성하였다.
+[관리자계정 로그인]
+
+[관리메뉴]
+
+[회원관리]
+
+
+▶상태변경 메시지
+
+[신규상품 등록]
+
+[주문내역 조회]
+
+[상품목록 조회]
+
+
+[일반회원 로그인]
+
+[검색기능]
+▶검색어가 없을 경우 경고문구 출력
+[마이페이지]
+
+▶상품 구매시 포인트 적립 가능, 마이페이지에서 확인 가능
+▶주문 조회
+[쇼핑카트]
+
+[구매페이지]
+
+
+[상품 후기글 및 평점]
+▶댓글기능을 이용한 리뷰 작성 및 별점
+[고객게시판]
+
+
+▶게시판 과제 내용을 가져옴
+[코드]
+[top-html]
+<html>
+<head>
+<title>MARBLE House</title>
+<style>
+    	<!--
+        	A:link { text-decoration:none;}
+        	A:visited { text-decoration:none;}
+        	A:active { text-decoration:none;}
+    	-->
+		
+		
+</style>
+</head>
+<body>
+<table width=900 border=1 cellspacing=0 cellpadding=0>
+<tr height=200> 
+  <td width=900 align=left background="topboard.png"  onClick="location.href='p-list.php'" style="cursor:pointer;"><font style="font-size:35pt; color:white; font-weight:bold">　　　　MARBLE House</td>
+</tr>
+<tr> 
+  <td bgcolor='#FFDF00'>
+<table width=900 border=0 cellspacing=0 cellpadding=0>
+	<tr height=30>
+         <td width=100>&nbsp;</td>
+         <td width=100 align=center><a href=p-list.php?class=1><font color=orange style='font-size:15pt;' onMouseover="this.style.color='#E43333'" onMouseout="this.style.color='orange'"><b>Beef</b></font></a></td>
+         <td width=20 align=center><font color=orange>|</font></td>
+         <td width=100 align=center><a href=p-list.php?class=2><font color=orange style='font-size:15pt;' onMouseover="this.style.color='#E43333'"onMouseout="this.style.color='orange'"><b>Pork</b></font></a></td>
+         <td width=20 align=center><font color=orange>|</font></td>
+         <td width=100 align=center><a href=p-list.php?class=3><font color=orange style='font-size:15pt;' onMouseover="this.style.color='#E43333'"onMouseout="this.style.color='orange'"><b>Chicken</b></font></a></td>
+         <td width=20 align=center><font color=orange>|</font></td>
+         <td width=100 align=center><a href=p-list.php?class=4><font color=orange style='font-size:15pt;' onMouseover="this.style.color='#E43333'" onMouseout="this.style.color='orange'"><b>Others</b></font></a></td>
+         <td width=20 align=center><font color=orange>|</font></td>
+		 <td width=100 align=center><a href=p-list.php?class=5><font color=orange style='font-size:15pt;' onMouseover="this.style.color='#E43333'" onMouseout="this.style.color='orange'"><b>Processed</b></font></a></td>
+         <td width=20 align=center><font color=orange>|</font></td>		
+	    <td width=100>&nbsp;</td>
+          </tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+
+[bottom-html]
+<table border=0 width=900 cellpadding=0 cellspacing=0>
+<tr height=25 bgcolor='#FFDF00' style="outline: thin solid">
+	<td width=170 align=center valign=center><font color=orange><b>070-1234-1234</b></font></td>
+	<td width=200>&nbsp;</td>
+	<td align=right valign=center><a href=show.php?board=customer><font color=orange style='font-size:13pt;' onMouseover="this.style.color='#E43333'" onMouseout="this.style.color='orange'"><b>고객게시판</b></font></a></td></td>
+	<td width=50>&nbsp;</td>
+</tr>
+<tr>
+	<td width=700 align=center valign=center colspan='3'><font style='font-size:8pt;'>Copyright &copy;2021 MARBLE Online Butcher Shop, All Rights Reserved</font>
+	</td>
+</tr>
+</table>
+
+[left.html]
+<? if (!$UserID) { ?>
+
+<table width=170 cellspacing=0 cellpadding=0 align=center>
+<tr><td>
+<form method=post action=login.php onsubmit="if(!this.uid.value 
+|| !this.upass.value) return false;">
+<table style="border: thin solid; border-radius:10px;" border=0 width=170 bgcolor='000000' >
+        <tr><td align=right><font color=white style='font-size:12pt;'><b>ID: </b></font></td><td><input type=text size=10 name=uid></td>
+		<td rowspan=2 align=center height=50><input type=submit value=Login style='height:50; border-radius:15px; font-weight:bold; background-color:orange;' onMouseover="this.style.color='red'" onMouseout="this.style.color='black'"></td></tr>
+		<tr><td align=right><font color=white style='font-size:12pt;'><b>PW: </b></font></td><td><input type=password size=10 name=upass></td></tr>
+</form>
+</td></tr>
+
+<tr><td align=center colspan=3><a href=join.html><font color=white style='font-size:12pt;'onMouseover="this.style.color='red'" onMouseout="this.style.color='white'"><b>회원등록</a>
+<font color=white style='font-size:12pt;'> | </font>
+<a href=findidpw.php><font color=white style='font-size:12pt;'onMouseover="this.style.color='red'" onMouseout="this.style.color='white'">비번분실</a></b></font></td></tr>
+</table>
+</table>
+
+<? } else { ?>
+
+<table style="border: thin solid; border-radius:10px;" width=170 cellspacing=0 cellpadding=0 align=center bgcolor='000000'>
+<?if ($UserID == "admin") {  ?>
+	<tr height=85><td align=center><font color=white style='font-size:14pt;'><b>운영자님<br>반갑습니다</b></font></td></tr>
+<? }else {  ?>
+	<tr height=85><td align=center><font color=white style='font-size:14pt;'><b><? echo $UserName; ?>님<br>반갑습니다</b></font></td></tr>
+<? } ?>
+
+
+<tr><td align=center>
+	<table><tr><td style="border: thin solid;  border-radius:10px;" width=65 align=center bgcolor=orange><a href=mypage.php><font color=black style='font-size:12pt;' onMouseover="this.style.color='red'" onMouseout="this.style.color='black'"><b>My<br>Page</b></font></a></td>
+	<td width=5></td>
+	<td style="border: thin solid; border-radius:10px;" width=65 align=center  bgcolor=orange><a href=logout.php><font color=black style='font-size:12pt;' onMouseover="this.style.color='red'" onMouseout="this.style.color='black'"><b>LOG<br>OUT</b></font></a></td></tr></table>
+</td></tr>
+<tr><td>
+
+<?
+if ($UserID == "admin") {  ?>
+	<table width=153 height=50 align=center>
+	<tr><td style="border: thin solid; border-radius:10px;" bgcolor='#7794F4' align=center><a href=admin.php><font color=black style='font-size:15pt;' onMouseover="this.style.color='red'" onMouseout="this.style.color='black'"><b>관리메뉴</b></font></a></td>
+<? }else {  ?>
+	<table width=153 height=50 align=center>
+	<tr><td style="border: thin solid; border-radius:10px;" bgcolor=orange align=center><a href=showbag.php><font color=black style='font-size:15pt;' onMouseover="this.style.color='red'" onMouseout="this.style.color='black'"><b>쇼핑카트</b></font></a></td>
+<? } ?> 
+</table>
+</td></tr>
+</table>
+
+<? } ?>
+<table>
+<tr><td align=center><img src="time.png" width=90%></td></tr>
+<tr><td align=center><img src="count.png" width=90%></td></tr>
+</table>
+
+[p-list]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+<?	
+
+
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+ 
+if   (!isset($class)) $class=0;
+
+switch($class) {
+   case 0: 
+       $result = mysql_query("select * from product order by hit desc", $con);
+		break;
+   default:
+       $result = mysql_query("select * from product where class=$class order by hit desc", $con);
+		break;
+}
+
+$total = mysql_num_rows($result);
+	
+echo   ("<table border=0 cellspacing=0 width=690><tr>");
+
+if (!$total){
+	echo ("<td align=center><font color=red>등록된 상품이 없습니다.</td>");
+} elseif ($class == 1) {
+	echo("<tr><td><img src='cow.png'><font style='font-size:30pt; '><b>Beef</b></td></tr>
+		<tr><td bgcolor=orange height=10 colspan=5></td></tr>
+		<tr>");
+	$counter = 0;
+	while ($counter < $total &&   $counter < 16 ) :
+		
+			if ($counter > 0 && ($counter % 5) == 0 ) echo ("</tr><tr><td colspan=5><hr size=1  color=green width=100%></td></tr><tr>");
+
+			$code=mysql_result($result,$counter,"code");
+			$name=mysql_result($result,$counter,"name");
+			$userfile=mysql_result($result,$counter,"userfile");
+			$price2=mysql_result($result,$counter,"price2");
+
+			switch(strlen($price2)) {
+				case 6: 
+				   $price2 = substr($price2, 0, 3) . "," . substr($price2, 3,   3);
+				   break;
+				case 5:
+				   $price2 = substr($price2, 0, 2) . "," . substr($price2, 2,   3);
+				   break;
+				case 4:
+				   $price2 = substr($price2, 0, 1) . "," . substr($price2, 1,   3);
+				   break;	   
+			}
+			
+			echo ("<td width=135  align=center><a href=p-show.php?code=$code> <img src='./photo/$userfile' width=100 border=0><br><font color=blue style='text- decoration:none;   font-size:10pt;'>$name</a></font><br>");
+			echo ("<font color=red   size=2><b>$price2&nbsp;원</b></font></td>");
+
+			$counter++;
+	endwhile;
+} elseif ($class == 2) {
+	echo("<tr><td><img src='pork.png'><font style='font-size:30pt; '><b>Pork</b></td></tr>
+		<tr><td bgcolor=orange height=10 colspan=5></td></tr>
+		<tr>");
+	$counter = 0;
+	while ($counter < $total &&   $counter < 16 ) :
+		
+			if ($counter > 0 && ($counter % 5) == 0 ) echo ("</tr><tr><td colspan=5><hr size=1  color=green width=100%></td></tr><tr>");
+
+			$code=mysql_result($result,$counter,"code");
+			$name=mysql_result($result,$counter,"name");
+			$userfile=mysql_result($result,$counter,"userfile");
+			$price2=mysql_result($result,$counter,"price2");
+
+			switch(strlen($price2)) {
+				case 6: 
+				   $price2 = substr($price2, 0, 3) . "," . substr($price2, 3,   3);
+				   break;
+				case 5:
+				   $price2 = substr($price2, 0, 2) . "," . substr($price2, 2,   3);
+				   break;
+				case 4:
+				   $price2 = substr($price2, 0, 1) . "," . substr($price2, 1,   3);
+				   break;	   
+			}
+			
+			echo ("<td width=135  align=center><a href=p-show.php?code=$code> <img src='./photo/$userfile' width=100 border=0><br><font color=blue style='text- decoration:none;   font-size:10pt;'>$name</a></font><br>");
+			echo ("<font color=red   size=2><b>$price2&nbsp;원</b></font></td>");
+
+			$counter++;
+	endwhile;
+} elseif ($class == 3) {
+	echo("<tr><td><img src='chicken.png'><font style='font-size:30pt; '><b>Chicken</b></td></tr>
+		<tr><td bgcolor=orange height=10 colspan=5></td></tr>
+		<tr>");
+	$counter = 0;
+	while ($counter < $total &&   $counter < 16 ) :
+		
+			if ($counter > 0 && ($counter % 5) == 0 ) echo ("</tr><tr><td colspan=5><hr size=1  color=green width=100%></td></tr><tr>");
+
+			$code=mysql_result($result,$counter,"code");
+			$name=mysql_result($result,$counter,"name");
+			$userfile=mysql_result($result,$counter,"userfile");
+			$price2=mysql_result($result,$counter,"price2");
+
+			switch(strlen($price2)) {
+				case 6: 
+				   $price2 = substr($price2, 0, 3) . "," . substr($price2, 3,   3);
+				   break;
+				case 5:
+				   $price2 = substr($price2, 0, 2) . "," . substr($price2, 2,   3);
+				   break;
+				case 4:
+				   $price2 = substr($price2, 0, 1) . "," . substr($price2, 1,   3);
+				   break;	   
+			}
+			
+			echo ("<td width=135  align=center><a href=p-show.php?code=$code> <img src='./photo/$userfile' width=100 border=0><br><font color=blue style='text- decoration:none;   font-size:10pt;'>$name</a></font><br>");
+			echo ("<font color=red   size=2><b>$price2&nbsp;원</b></font></td>");
+
+			$counter++;
+	endwhile;
+} elseif ($class == 4) {
+	echo("<tr><td><img src='others.png'><font style='font-size:30pt; '><b>Others</b></td></tr>
+		<tr><td bgcolor=orange height=10 colspan=5></td></tr>
+		<tr>");
+	$counter = 0;
+	while ($counter < $total &&   $counter < 16 ) :
+		
+			if ($counter > 0 && ($counter % 5) == 0 ) echo ("</tr><tr><td colspan=5><hr size=1  color=green width=100%></td></tr><tr>");
+
+			$code=mysql_result($result,$counter,"code");
+			$name=mysql_result($result,$counter,"name");
+			$userfile=mysql_result($result,$counter,"userfile");
+			$price2=mysql_result($result,$counter,"price2");
+
+			switch(strlen($price2)) {
+				case 6: 
+				   $price2 = substr($price2, 0, 3) . "," . substr($price2, 3,   3);
+				   break;
+				case 5:
+				   $price2 = substr($price2, 0, 2) . "," . substr($price2, 2,   3);
+				   break;
+				case 4:
+				   $price2 = substr($price2, 0, 1) . "," . substr($price2, 1,   3);
+				   break;	   
+			}
+			
+			echo ("<td width=135  align=center><a href=p-show.php?code=$code> <img src='./photo/$userfile' width=100 border=0><br><font color=blue style='text- decoration:none;   font-size:10pt;'>$name</a></font><br>");
+			echo ("<font color=red   size=2><b>$price2&nbsp;원</b></font></td>");
+
+			$counter++;
+	endwhile;
+} elseif ($class == 5) {
+	echo("<tr><td><img src='processed.png'><font style='font-size:30pt; '><b>Processed</b></td></tr>
+		<tr><td bgcolor=orange height=10 colspan=5></td></tr>
+		<tr>");
+	$counter = 0;
+	while ($counter < $total &&   $counter < 16 ) :
+		
+			if ($counter > 0 && ($counter % 5) == 0 ) echo ("</tr><tr><td colspan=5><hr size=1  color=green width=100%></td></tr><tr>");
+
+			$code=mysql_result($result,$counter,"code");
+			$name=mysql_result($result,$counter,"name");
+			$userfile=mysql_result($result,$counter,"userfile");
+			$price2=mysql_result($result,$counter,"price2");
+
+			switch(strlen($price2)) {
+				case 6: 
+				   $price2 = substr($price2, 0, 3) . "," . substr($price2, 3,   3);
+				   break;
+				case 5:
+				   $price2 = substr($price2, 0, 2) . "," . substr($price2, 2,   3);
+				   break;
+				case 4:
+				   $price2 = substr($price2, 0, 1) . "," . substr($price2, 1,   3);
+				   break;	   
+			}
+			
+			echo ("<td width=135  align=center><a href=p-show.php?code=$code> <img src='./photo/$userfile' width=100 border=0><br><font color=blue style='text- decoration:none;   font-size:10pt;'>$name</a></font><br>");
+			echo ("<font color=red   size=2><b>$price2&nbsp;원</b></font></td>");
+
+			$counter++;
+	endwhile;
+} else{
+	$counter = 0;
+	while ($counter < $total &&   $counter < 26 ) :
+		
+			if ($counter > 0 && ($counter % 5) == 0 ) echo ("</tr><tr><td colspan=5><hr size=1 color=green width=100%></td></tr><tr>");
+
+			$code=mysql_result($result,$counter,"code");
+			$name=mysql_result($result,$counter,"name");
+			$userfile=mysql_result($result,$counter,"userfile");
+			$price2=mysql_result($result,$counter,"price2");
+
+			switch(strlen($price2)) {
+				case 6: 
+				   $price2 = substr($price2, 0, 3) . "," . substr($price2, 3,   3);
+				   break;
+				case 5:
+				   $price2 = substr($price2, 0, 2) . "," . substr($price2, 2,   3);
+				   break;
+				case 4:
+				   $price2 = substr($price2, 0, 1) . "," . substr($price2, 1,   3);
+				   break;	   
+			}
+			
+			echo ("<td width=135  align=center><a href=p-show.php?code=$code> <img src='./photo/$userfile' width=100 border=0><br><font color=blue style='text- decoration:none;   font-size:10pt;'>$name</a></font><br>");
+			echo ("<font color=red   size=2><b>$price2&nbsp;원</b></font></td>");
+
+			$counter++;
+	endwhile;
+}
+echo ("<table width=690 align=center>
+<tr><td width=500 align=right>
+<form method=post action=p-search.php?board=$board >
+<b>상품검색 </b><input type=text name=key size=20 height=70>
+<input type=image src=search.png width=25 height=25 title='검색'>
+</td>
+</form>
+</tr></table>");
+echo ("</tr></table>");
+mysql_close($con);
+
+?>
+
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[p-search.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+<?
+
+			
+if (!$key) {
+	echo("<script>
+		window.alert('검색어를 입력하세요');
+		history.go(-1);
+		</script>");
+	exit;
+}
+
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+$result=mysql_query("select * from product where name like '%$key%' ",$con);
+$total = @mysql_num_rows($result);
+
+echo("
+   <br>
+	<table  width=100% cellspacing=0 >
+	<tr><td width=22% height=20 align=center bgcolor=black style='border: thin solid; border-radius:10px;'><font color=white size=5><b>검색어:$key</b></font></td>
+	<td>&nbsp찾은 개수:<b>$total</b> 개</td>
+	<td align=right><font size=4>[<a href=show.php style='color:black;' onMouseover='this.style.color='red''onMouseout='this.style.color='black'><b>Back</b></a>]</td></tr>
+	<tr border=1><td bgcolor=black width=100% height=5 colspan=3></td></tr>
+   </table>
+ <br>
+ <table>
+");
+
+if (!$total){
+	echo("<tr id=t2><td colspan=5 align=center>검색된 상품이 없습니다.</td></tr>");
+} else {
+	$counter = 0;
+	while ($counter < $total &&   $counter < 26 ) :
+		
+			if ($counter > 0 && ($counter % 5) == 0 ) echo ("</tr><tr><td colspan=5><hr size=1 color=green width=100%></td></tr><tr>");
+
+			$code=mysql_result($result,$counter,"code");
+			$name=mysql_result($result,$counter,"name");
+			$userfile=mysql_result($result,$counter,"userfile");
+			$price2=mysql_result($result,$counter,"price2");
+
+			switch(strlen($price2)) {
+				case 6: 
+				   $price2 = substr($price2, 0, 3) . "," . substr($price2, 3,   3);
+				   break;
+				case 5:
+				   $price2 = substr($price2, 0, 2) . "," . substr($price2, 2,   3);
+				   break;
+				case 4:
+				   $price2 = substr($price2, 0, 1) . "," . substr($price2, 1,   3);
+				   break;	   
+			}
+			
+			echo ("<td width=135  align=center><a href=p-show.php?code=$code> <img src='./photo/$userfile' width=100 border=0><br><font color=blue style='text- decoration:none;   font-size:10pt;'>$name</a></font><br>");
+			echo ("<font color=red   size=2><b>$price2&nbsp;원</b></font></td>");
+
+			$counter++;
+	endwhile;
+}
+echo ("<table width=690 align=center>
+<tr><td width=500 align=right>
+<form method=post action=p-search.php?board=$board >
+<b>상품검색 </b><input type=text name=key size=20 height=70>
+<input type=image src=search.png width=25 height=25 title='검색'>
+</td>
+</form>
+</tr></table>");
+echo ("</tr></table>");
+
+	
+mysql_close($con);
+
+?>
+ 
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[p-input.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+<br>
+	<table  width=100% cellspacing=0 >
+	<tr><td width=18% height=20 align=center bgcolor=black style='border: thin solid; border-radius:10px;'><font color=white size=5><b>상품등록<b></font></td>
+	<td align=right><font size=4>[<a href=admin.php style='color:black;' onMouseover='this.style.color='red''onMouseout='this.style.color='black'><b>Back</b></a>]</td></tr>
+	<tr border=1><td bgcolor=black width=100% height=5 colspan=2></td></tr>
+	</table>
+<br>
+
+<table border=0 width=650>
+<form method=post action=p-process.php enctype='multipart/form-data'>
+<tr>
+<td width=100 align=right>상품분류</td>
+<td width=550>
+	<select name=class>
+	<option value=1>Beef</option>
+	<option value=2>Pork</option>
+	<option value=3>Chicken</option>
+	<option value=4>Others</option>
+	<option value=5>Processed</option>
+	</select>
+</td>
+</tr>
+<tr>
+<td align=right>상품코드</td>
+<td><input type=text name=code size=20></td>
+</tr>
+<tr>
+<td align=right>상품이름</td>
+<td><input type=text name=name size=70></td>
+</tr>
+<tr>
+<td align=right>상품설명</td>
+<td><textarea name=content rows=15 cols=75></textarea></td>
+</tr>
+<tr>
+<td align=right>원산지</td>
+<td>
+	<input type=radio name=contrysl value='국내산'>국내산
+	<input type=radio name=contrysl value='수입산'>수입산
+	<input type=text name=contry size=15></td>
+</tr>
+<tr>
+<td align=right>정상가격</td>
+<td><input type=text name=price1 size=15>원</td>
+</tr>
+<tr>
+<td align=right>할인가격</td>
+<td><input type=text name=price2 size=15>원</td>
+</tr>
+<tr>
+<td align=right>상품사진</td>
+<td><input type=file size=30 name=userfile></td>
+</tr>
+<tr>
+<td align=right colspan=5>
+<input style='background-color:orange; border-radius:10px;' type=submit value=등록하기></td>
+</tr>
+</form>
+</table>
+
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[p-process.php]
+<?
+
+if (!$code){
+	echo("
+		<script>
+		window.alert('상품코드명이 없습니다. 다시 입력하세요.')
+		history.go(-1)
+		</script>
+	");
+	exit;
+}
+
+if (!$name){
+	echo("
+		<script>
+		window.alert('상품명이 없습니다. 다시 입력하세요.')
+		history.go(-1)
+		</script>
+	");
+	exit;
+}
+
+if (!$contrysl){
+	echo("
+		<script>
+		window.alert('원산지가 없습니다. 다시 입력하세요.')
+		history.go(-1)
+		</script>
+	");
+	exit;
+}else{
+	if ($contrysl == 수입산){
+		if (!$contry){
+			echo("
+				<script>
+				window.alert('수입한 원산지가 없습니다. 다시 입력하세요.')
+				history.go(-1)
+				</script>
+			");
+			exit;
+		}
+	}
+}
+
+if(!$price1){
+	echo("
+		<script>
+		window.alert('가격이 없습니다. 다시 입력하세요.')
+		history.go(-1)
+		</script>
+	");
+	exit;
+}
+
+if (!$userfile){
+	echo("
+		<script>
+        window.alert('상품 사진을 선택해 주세요')
+        history.go(-1)
+        </script>
+    ");
+    exit;
+} else {
+    $savedir = "./photo";
+    $temp = $userfile_name;
+    if (file_exists("$savedir/$temp")) {
+         echo (" 
+             <script>
+             window.alert('동일한 화일 이름이 이미 서버에 존재합니다')
+             history.go(-1)
+             </script>
+         ");
+         exit;
+    } else {
+         copy($userfile, "$savedir/$temp");
+         unlink($userfile);
+    }
+}
+
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+	
+if ($contrysl == '국내산'){
+	$result = mysql_query("insert into product(class, code, name, content, contry, price1, price2, userfile, hit) values ($class, '$code', '$name', '$content', '$contrysl', '$price1', '$price2', '$userfile_name', 0)", $con);
+}else{
+	$result = mysql_query("insert into product(class, code, name, content, contry, price1, price2, userfile, hit) values ($class, '$code', '$name', '$content', '$contry', '$price1', '$price2', '$userfile_name', 0)", $con);
+}
+mysql_close($con);		
+
+if (!$result) {
+   echo("
+      <script>
+      window.alert('이미 사용중인 상품 코드입니다')
+      history.go(-1)
+      </script>
+   ");
+   exit;
+} else {
+   echo("
+      <script>
+      window.alert('상품 등록이 완료되었습니다')
+      </script>
+   ");
+}
+echo ("<meta http-equiv='Refresh' content='0; url=p-adminlist.php'>");
+
+?>
+
+[p-adminlist.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+<?
+
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+$result = mysql_query("select * from product order by name", $con);
+
+$total = mysql_num_rows($result);
+echo("<br>
+	<table  width=100% cellspacing=0 >
+	<tr><td width=26% height=20 align=center bgcolor=black style='border: thin solid; border-radius:10px;'><font color=white size=5><b>상품 목록 조회<b></font></td>
+	<td align=right><font size=4>[<a href=admin.php style='color:black;' onMouseover='this.style.color='red''onMouseout='this.style.color='black'><b>Back</b></a>]</td></tr>
+	<tr border=1><td bgcolor=black width=100% height=5 colspan=2></td></tr>
+	</table>
+<br>");
+
+echo ("<table border=1 width=690>
+	<tr><td align=center><font size=2>상품코드</td>
+	<td colspan=2 align=center><font size=2>상품명</td>
+	<td align=center><font size=2>권장가격</td>
+	<td align=center><font size=2>판매가격</td>
+	<td align=center><font size=2>원산지</td>
+	<td align=center><font size=2>수정/삭제</td></tr>");
+							
+if (!$total) {
+
+  echo("<tr><td colspan=7 align=center>아직 등록된 상품이 없습니다</td></tr>");
+
+} else {
+
+	$counter = 0;
+	
+	while ($counter < $total) :
+
+		$code=mysql_result($result,$counter,"code");
+		$name=mysql_result($result,$counter,"name");
+		$userfile=mysql_result($result,$counter,"userfile");
+		$price1=mysql_result($result,$counter,"price1");
+		$price2=mysql_result($result,$counter,"price2");
+		$contry=mysql_result($result,$counter,"contry");
+
+		echo ("
+		   <tr><td width=100 align=center><font size=2>$code</td>
+			 <td align=center width=30><img src=./photo/$userfile width=40 height=40 border=0></td>
+			   <td width=350 align=left><a href=p-show.php?code=$code><font size=2>$name</a></td>
+			   <td align=right width=70><font size=2><strike>$price1&nbsp;원</strike></td>
+			   <td align=right width=70><font size=2>$price2&nbsp;원</td>
+			  ");
+		if($contry == "국내산"){
+			echo("
+			   <td align=right width=70><font size=2>국내산</td>
+			  ");
+		}else{
+			echo("
+			   <td align=right width=70><font size=2>수입산</td>
+			");
+		}
+		echo ("
+			   <td width=75 align=center><font size=2><a href=p-modify.php?code=$code>수정</a>/<a href=p-delete.php?code=$code>삭제</a></td></tr>");
+
+		$counter++;
+	endwhile;
+}
+
+echo ("</table>");
+	     
+mysql_close($con);
+
+?>
+
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[p-modify.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+<br>
+	<table  width=100% cellspacing=0 >
+	<tr><td width=18% height=20 align=center bgcolor=black style='border: thin solid; border-radius:10px;'><font color=white size=5><b>상품수정<b></font></td>
+	<td align=right><font size=4>[<a href=p-adminlist.php style='color:black;' onMouseover='this.style.color='red''onMouseout='this.style.color='black'><b>Back</b></a>]</td></tr>
+	<tr border=1><td bgcolor=black width=100% height=5 colspan=2></td></tr>
+	</table>
+<br>
+
+<?
+
+$con=mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+
+$result = mysql_query("select * from product where code='$code'", $con);
+
+$class=mysql_result($result,0,"class");
+$name=mysql_result($result,0,"name");
+$contry=mysql_result($result,0,"contry");
+$price1=mysql_result($result,0,"price1");
+$price2=mysql_result($result,0,"price2");
+$content=mysql_result($result,0,"content");
+$userfile=mysql_result($result,0,"userfile");
+		
+echo ("
+    <table align=center border=0 width=650>     
+	<form method=post action=p-modify2.php?code=$code enctype='multipart/form-data'>
+	<tr><td width=100 align=center>상품코드</td>
+	<td width=550><b>$code</b></td></tr>
+	<tr><td align=center>상품분류</td>
+	<td><select name=class>");
+
+switch($class) {
+    case 1:
+		echo ("<option value=1 selected>Beef</option>
+			<option value=2>Pork</option>
+            <option value=3>Chciken</option>
+			<option value=4>Others</option>
+            <option value=5>Processed</option>");
+		break;
+	case 2:
+		echo ("<option value=1>Beef</option>
+			<option value=2 selected>Pork</option>
+            <option value=3>Chciken</option>
+			<option value=4>Others</option>
+            <option value=5>Processed</option>");
+		break;
+	case 3:
+       echo ("<option value=1Beef</option>
+			<option value=2>Pork</option>
+            <option value=3 selected>>Chciken</option>
+			<option value=4>Others</option>
+            <option value=5>Processed</option>");
+		break;
+	case 4:
+       echo ("<option value=1>Beef</option>
+			<option value=2>Pork</option>
+            <option value=3>Chciken</option>
+			<option value=4 selected>Others</option>
+            <option value=5>Processed</option>");
+		break;
+	case 5:
+       echo ("<option value=1 >Beef</option>
+			<option value=2>Pork</option>
+            <option value=3>Chciken</option>
+			<option value=4>Others</option>
+            <option value=5selected>Processed</option>");
+		break;
+}
+
+echo ("</select></td></tr>
+	<tr><td align=center>상품이름</td><td><input type=text name=name size=70 value='$name'></td></tr>
+	<tr><td align=center>상품설명</td><td><textarea name=content rows=15 cols=75>$content</textarea></td></tr>
+	<tr><td align=center>원산지</td>
+		<td>");
+if($contry == '국내산'){
+	echo("<input type=radio name=contrysl value='국내산' checked='checked'>국내산
+		<input type=radio name=contrysl value='수입산'>수입산
+		<input type=text name=contry size=15></td></tr>");
+}else{
+	echo("<input type=radio name=contrysl value='국내산'>국내산
+		<input type=radio name=contrysl value='수입산' checked='checked'>수입산
+		<input type=text name=contry size=15 value=$contry></td></tr>");
+}
+echo("		
+	<tr><td align=center>정상가격</td><td><input type=text name=price1 size=15 value=$price1>원</td></tr>
+	<tr><td align=center>할인가격</td><td><input type=text name=price2 size=15 value=$price2>원</td></tr>
+	<tr><td align=center>상품사진</td><td><input type=file size=30 name=userfile><-- $userfile</td></tr>
+	<tr><td align=right colspan=2><input style='background-color:orange; border-radius:10px;' type=submit value=수정완료></tr>
+	</form>
+	</table>");
+
+mysql_close($con);
+
+?>
+
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[p-modify2]
+ <?
+
+if (!$name){
+	echo("
+		<script>
+		window.alert('상품명이 없습니다. 다시 입력하세요.')
+		history.go(-1)
+		</script>
+	");
+	exit;
+}
+
+if (!$contrysl){
+	echo("
+		<script>
+		window.alert('원산지가 없습니다. 다시 입력하세요.')
+		history.go(-1)
+		</script>
+	");
+	exit;
+}else{
+	if ($contrysl == 수입산){
+		if (!$contry){
+			echo("
+				<script>
+				window.alert('수입한 원산지가 없습니다. 다시 입력하세요.')
+				history.go(-1)
+				</script>
+			");
+			exit;
+		}
+	}
+}
+
+if(!$price1){
+	echo("
+		<script>
+		window.alert('가격이 없습니다. 다시 입력하세요.')
+		history.go(-1)
+		</script>
+	");
+	exit;
+}
+
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+	
+
+// 기존 상품 이미지를 그대로 사용하는 경우
+if (!$userfile){
+	if ($contrysl == 국내산){
+		$result = mysql_query("update product set class=$class, name='$name', content='$content', contry='$contrysl', price1=$price1, price2=$price2 where code='$code'", $con);
+	}else{
+		$result = mysql_query("update product set class=$class, name='$name', content='$content', contry='$contry', price1=$price1, price2=$price2 where code='$code'", $con);
+	}
+} else {
+
+     // 기존 상품 이미지 파일을 삭제
+	$tmp = mysql_query("select userfile from product where code='$code'", $con);
+	$fname = mysql_result($tmp, 0, "userfile");
+    $savedir = "./photo";
+	unlink("$savedir/$fname");
+	
+    // 새로이 첨부한 이미지 파일을 저장	
+    $temp = $userfile_name;
+    if (file_exists("$savedir/$temp")) {
+         echo (" 
+             <script>
+             window.alert('동일한 화일 이름이 서버에 존재합니다')
+             history.go(-1)
+             </script>
+         ");
+         exit;
+    } else {
+         copy($userfile, "$savedir/$temp");
+         unlink($userfile);
+    }
+	
+	if ($contrysl == 국내산){
+		$result = mysql_query("update product set class=$class, name='$name', content='$content', contry='$contrsl', price1=$price1, price2=$price2, userfile='$userfile_name' where code='$code'", $con);
+	}else{
+		$result = mysql_query("update product set class=$class, name='$name', content='$content', contry='$contry', price1=$price1, price2=$price2, userfile='$userfile_name' where code='$code'", $con);		
+	}
+}
+
+if (!$result) {
+	echo("
+      <script>
+      window.alert('상품 수정에 실패했습니다')
+      </script>
+    ");
+    exit;
+} else {
+	echo("
+      <script>
+      window.alert('상품 수정이 완료되었습니다')
+      </script>
+   ");
+} 
+
+mysql_close($con);		//데이터베이스 연결해제
+
+echo ("<meta http-equiv='Refresh' content='0; url=p-adminlist.php'>");
+
+?>
+
+[p-delete]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+
+<br>
+	<table  width=100% cellspacing=0 >
+	<tr><td width=18% height=20 align=center bgcolor=black style='border: thin solid; border-radius:10px;'><font color=white size=5><b>상품삭제<b></font></td>
+	<td align=right><font size=4>[<a href=p-adminlist.php style='color:black;' onMouseover='this.style.color='red''onMouseout='this.style.color='black'><b>Back</b></a>]</td></tr>
+	<tr border=1><td bgcolor=black width=100% height=5 colspan=2></td></tr>
+	</table>
+<br>
+
+<?
+
+$con=mysql_connect("localhost", "root", "apmsetup");
+mysql_select_db("shopmall", $con);
+
+$result = mysql_query("select * from product where code='$code'", $con);
+
+$name=mysql_result($result,0,"name");
+		
+echo ("
+    <table border=0 width=650 align=center>
+	<tr><td width=100 align=center>상품코드</td>
+     <td width=550><b>$code</b></td></tr>
+	<tr><td align=center>상품이름</td><td><b>$name</b></td></tr>
+	<tr><td colspan=2 height=50 align=center valign=center>위 상품을 삭제하시겠습니까?</td></tr> 
+	<tr><td colspan=2 align=right><form method=post action=p-delete2.php?code=$code><input style='background-color:orange; border-radius:10px;' type=submit value='삭제 확인'></form></td></tr>
+
+	</table>");
+	
+mysql_close($con);
+
+?>
+
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[p-delete2]
+<?
+
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+
+// 상품 이미지 파일을 photo 폴더 내에서 삭제
+$tmp = mysql_query("select userfile from product where code='$code'", $con);
+$fname = mysql_result($tmp, 0, "userfile");
+$savedir = "./photo";
+unlink("$savedir/$fname");
+	
+$result = mysql_query("delete from product where code='$code'", $con);
+
+if (!$result) {
+   echo("
+      <script>
+      window.alert('상품 삭제에 실패했습니다')
+      history.go(-1)
+      </script>
+   ");
+   exit;
+} else {
+   echo("
+      <script>
+      window.alert('상품이 정상적으로 삭제되었습니다')
+      </script>
+   ");
+}
+
+mysql_close($con);
+
+echo ("<meta http-equiv='Refresh' content='0; url=p-adminlist.php'>");
+
+?>
+
+
+[p-show.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+<?
+
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+
+$result = mysql_query("select * from product where code='$code'", $con);
+$total = mysql_num_rows($result);
+
+$name=mysql_result($result,0,"name");
+$content=mysql_result($result,0,"content");
+$content=nl2br($content);
+$contry=mysql_result($result,0,"contry");
+$price1=mysql_result($result,0,"price1");
+$price2=mysql_result($result,0,"price2");
+$userfile=mysql_result($result,0,"userfile");
+$per= 100 - (( $price2 / $price1 * 100 ) % 100 );
+
+// 상품의 조회수를 읽어와서 1 증가시킨 다음 업데이트 쿼리를 적용
+$hit=mysql_result($result,0,"hit");
+$hit++;
+mysql_query("update product set hit=$hit where code='$code'", $con);
+
+?>
+	<br>
+	<table  width=100% cellspacing=0 >
+	<tr><td width=18% height=20 align=center bgcolor=black style="border: thin solid; border-radius:10px;"><font color=white size=5><b>상품 내용<b></font></td>
+	<td align=right><font size=4>[<a href=index.html style="color:black;" onMouseover="this.style.color='red'"onMouseout="this.style.color='black'"><b>Back</b></a>]</td></tr>
+	<tr border=1><td bgcolor=black width=100% height=5 colspan=2></td></tr>
+	</table>
+
+<?
+echo ("
+	
+	<table width=650 border=0>
+    <tr><td width=250 align=center>
+	<a href=# onclick=\"window.open('./photo/$userfile', '_new', 'width=450, height=450')\"><img src='./photo/$userfile' width=150 border=1></a></td>
+    <td width=400 valign=top>
+    <table border=0 width=100%>
+	  <tr><td width=80 align=right>상품코드: </td>
+	  <td width=320>&nbsp;&nbsp;$code</td></tr>
+	  <tr><td align=right>상품이름: </td>
+	  <td>&nbsp;&nbsp;$name</td></tr>
+	  <tr><td align=right>원산지: </td>
+	  <td>&nbsp;&nbsp;$contry</td></tr>
+	  <tr><td align=right>상품가격: </td>
+	  <td>&nbsp;&nbsp;<strike>$price1&nbsp;원</strike></td></tr>
+	  <tr><td align=right>할인가격: </td>
+	  <td>&nbsp;&nbsp;<b>$price2&nbsp;원 <font color=red>$per%</b></font></td></tr>
+	</table>
+	</td>
+	</tr>
+	</table>	
+	<br>
+	<table width=650 border=0>
+		<tr><td align=center>[상품 상세 설명]</td></tr>
+		<tr><td><hr size=1></td></tr>
+		<tr><td>$content</td></tr>
+	</table>
+	<table border=0 width=80%>
+    	 <tr><td colspan=2 height=100 valign=bottom align=right>
+	     <form method=post action=tobag.php?code=$code>
+	     <input type=text size=3 name=quantity value=1>&nbsp;
+	     <input style='background-color:orange; border-radius:10px;' type=submit value=담기>
+	     </td></tr></form>
+	</table> 
+");
+
+
+			
+$con =   mysql_connect("localhost", "root", "apmsetup");
+mysql_select_db("shopmall",   $con);
+$result =  mysql_query("select * from productmemo where code='$code' order by wdate desc", $con);
+$total =  mysql_num_rows($result);
+
+echo("<table align=center>");
+if (!$total)   {
+	echo ("<table border=1 align=center cellspacing=0 width=80%><tr id=t1><td>
+				<table align=center border=0 width=700>
+				<tr id=t1 align=center><td width=50>번호</td><td width=100>이름</td>
+				<td width=150>작성일자</td><td width=400>댓글내용</td></tr></td>
+				</table>
+			</table>
+			<table align=center><tr><td>등록된 한줄 리뷰가 없습니다.</td></tr></table>");
+		
+} 
+else{
+	echo ("
+			<table align=center border=1 cellspacing=0 width=700 align=center>
+				<tr align=center>
+				<td width=50>번호</td>
+				<td width=80>이름</td>
+				<td width=150>작성일자</td>
+				<td width=300>댓글내용</td>
+				<td width=80>별점</td></tr>
+	");
+
+	$pagesize =   5;	// 한 페이지에 보여 줄 메모 글의 개수
+	if ($mcpage ==  '') $mcpage = 1; 
+	$endpage = (int)($total / $pagesize);
+	if ( ($total % $pagesize) != 0 ) $endpage = $endpage + 1;
+	$i = 0;	
+	while ( $i   < $pagesize ) :
+		$counter = $pagesize * ($mcpage - 1) + $i;
+		if ($counter == $total) break;
+		$num=$i+1;
+		$name2 = mysql_result($result, $counter, "name");
+		$wdate = mysql_result($result, $counter, "wdate");
+		$date=substr($wdate,0,16);
+		$message = mysql_result($result,   $counter, "message");
+		$star = mysql_result($result,   $counter, "star");
+		echo ("
+			<tr bgcolor=white><td align=center>$num</td><td align=center>$name2</td>
+			<td align=center>$date</td><td>$message</td><td>$star 개</td></tr>
+		");
+		$i++;
+	endwhile;
+	echo ("</table>");
+	}
+
+
+echo("<form method=post align=center action=p-memo.php>
+			<table border=0 align=center>
+			<tr><td>
+			댓글
+			<input type=text size=30 name=wmemo>
+			암호
+			<input type=password name=wpasswd size=15>&nbsp;&nbsp;</td>
+			<td rowspan=2><input type=submit value=등록></td></tr>
+			<tr><td align=center><font style='color:#F6D52F; font-size:18px;'>
+				<input type=radio name=star value=1>★</option>
+				<input type=radio name=star value=2>★★</option>
+				<input type=radio name=star value=3>★★★</option>
+				<input type=radio name=star value=4>★★★★</option>
+				<input type=radio name=star value=5>★★★★★</option></td></tr>
+			</select></font>
+			</table>
+			<input type=hidden name=code value=$code>
+			</form>");
+?>
+</table>
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[p-memo.php]
+<?
+function check($message) {
+	echo ("
+		<script>
+		window.alert(\"$message\");
+		history.go(-1);
+		</script>
+	");
+	exit;
+}
+
+if (!$wmemo) {
+	check("내용을 입력하세요");
+}
+if (!$star) {
+	check("별점을 입력하세요");
+}
+
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+$wdate = date("Y-m-d-H:i:s");
+
+mysql_query("insert into productmemo(name, wdate, message, code, id, passwd, star) values('$UserID', '$wdate', '$wmemo', '$code', '$UserID', '$wpasswd', '$star')", $con);
+mysql_close($con);
+
+echo ("<meta http-equiv='Refresh' content='0; url=p-show.php?code=$code'>");
+
+?>
+
+[join.html]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+<table border=0 cellpadding=0 cellspacing=0 align=center>
+<tr>
+<td height=50><font size=2>- 회원가입을 위해 아래 이용약관 및 개인정보 보호정책을 반드시   읽으신 후 동의 여부를 확인해 주십시오.<br>- 회원가입 후 관리자의 승인을 받게되면 본 사이트의 모든 서비스를 사용할 수 있습니다.
+</td>
+</tr>
+<tr>
+<td height=30 valign=bottom><b>[이용약관]</b></td>
+</tr>
+<tr>
+<td height=50>
+<textarea cols=128 rows=13 readonly="readonly" style="font-size:8pt; font-family:Tahom a;">
+
+제1장 총칙
+
+제1조(목적)
+본 약관은 마블 하우스 (이하 "당 사이트")가 제공하는 모든 서비스(이하 "서비스")의 이용조건 및 절차, 이용자와 당 사이트의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.
+
+제2조(용어의 정의)
+본 약관에서 사용하는 용어의 정의는 다음과 같습니다.
+
+① 이용자 : 본 약관에 따라 당 사이트가 제공하는 서비스를 이용할 수 있는 자.
+② 가 입 : 당 사이트가 제공하는 신청서 양식에 해당 정보를 기입하고, 본 약관에 동의하여 서비스 이용계약을 완료시키는 행위
+③ 회 원 : 당 사이트에 개인정보 등 관련 정보를 제공하여 회원등록을 한 개인(재외국민, 국내거주 외국인 포함)또는 법인으로서 당 사이트의 정보를 제공 받으며, 당 사이트가 제공하는 서비스를 이용할 수 있는 자.
+④ 아이디(ID) : 회원의 식별과 서비스 이용을 위하여 회원이 문자와 숫자의 조합으로 설정한 고유의 체계
+⑤ 비밀번호 : 이용자와 아이디가 일치하는지를 확인하고 통신상의 자신의 비밀보호를 위하여 이용자 자신이 선정한 문자와 숫자의 조합.
+⑥ 탈 퇴 : 회원이 이용계약을 종료 시키는 행위
+⑦ 본 약관에서 정의하지 않은 용어는 개별서비스에 대한 별도 약관 및 이용규정에서 정의하거나 일반적인 개념에 의합니다.
+
+
+제3조(약관의 효력과 변경)
+① 당 사이트는 귀하가 본 약관 내용에 동의하는 것을 조건으로 귀하에게 서비스를 제공할 것이며, 귀하가 본 약관의 내용에 동의하는 경우, 당 사이트의 서비스 제공 행위 및 귀하의 서비스 사용 행위에는 본 약관이 우선적으로 적용됩니다.
+② 당 사이트는 본 약관을 변경할 수 있으며, 변경된 약관은 당 사이트 내에 공지함으로써 이용자가 직접 확인하도록 할 것입니다. 약관을 변경할 경우에는 적용일자 및 변경사유를 명시하여 당 사이트 내에 그 적용일자 30일 전부터 공지합니다. 약관 변경 공지 후 이용자가 명시적으로 약관 변경에 대한 거부의사를 표시하지 아니하면, 이용자가 약관에 동의한 것으로 간주합니다. 이용자가 변경된 약관에 동의하지 아니하는 경우, 이용자는 본인의 회원등록을 취소(회원탈퇴)할 수 있습니다.
+
+제4조(약관외 준칙)
+① 본 약관은 당 사이트가 제공하는 서비스에 관한 이용규정 및 별도 약관과 함께 적용됩니다.
+② 본 약관에 명시되지 않은 사항은 정보통신망 이용촉진 및 정보보호 등에 관한 법률, 전기통신기본법, 전기통신사업법, 정보통신윤리위원회심의규정, 정보통신 윤리강령, 프로그램보호법 등 관계법령과 개인정보 처리방침 및 행정안전부가 별도로 정한 지침 등의 규정에 따릅니다.
+
+제5조(회원정보의 통합관리)
+당 사이트의 회원정보는 행정기관 타 사이트의 회원정보와 통합하여 관리될 수 있습니다.
+
+제2장 서비스 제공 및 이용
+
+제6조(이용 계약의 성립)
+① 이용계약은 신청자가 온라인으로 당 사이트에서 제공하는 소정의 가입신청 양식에서 요구하는 사항을 기록하고, 이 약관에 대한 동의를 완료한 경우에 성립됩니다.
+② 당 사이트는 다음 각 호에 해당하는 이용계약에 대하여는 가입을 취소할 수 있습니다.
+   1. 다른 사람의 명의를 사용하여 신청하였을 때
+   2. 이용 계약 신청서의 내용을 허위로 기재하였거나 신청하였을 때
+   3. 사회의 안녕 질서 혹은 미풍양속을 저해할 목적으로 신청하였을 때
+   4. 다른 사람의 당 사이트 서비스 이용을 방해하거나 그 정보를 도용하는 등의 행위를 하였을 때
+   5. 당 사이트를 이용하여 법령과 본 약관이 금지하는 행위를 하는 경우
+   6. 기타 당 사이트가 정한 이용신청요건이 미비 되었을 때
+③ 당 사이트는 다음 각 호에 해당하는 경우 그 사유가 해소될 때까지 이용계약 성립을 유보할 수 있습니다.
+   1. 기술상의 장애사유로 인한 서비스 중단의 경우(시스템관리자의 고의·과실 없는 디스크장애, 시스템 다운 등)
+   2. 전기통신사업법에 의한 기간통신사업자가 전기통신 서비스를 중지하는 경우
+   3. 전시. 사변, 천재지변 또는 이에 준하는 국가 비상사태가 발생하거나 발생할 우려가 있는 경우
+   4. 긴급한 시스템 점검, 증설 및 교체설비의 보수 등을 위하여 부득이한 경우
+   5. 서비스 설비의 장애 또는 서비스 이용의 폭주 등 기타 서비스를 제공할 수 없는 사유가 발생한 경우
+④ 당 사이트가 제공하는 서비스는 아래와 같으며, 그 변경될 서비스의 내용을 이용자에게 공지하고 아래에서 정한 서비스를 변경하여 제공할 수 있습니다. 다만, 비회원에게는 서비스 중 일부만을 제공할 수 있습니다.
+   1. 당 사이트가 자체 개발하거나 다른 기관과의 협의 등을 통해 제공하는 일체의 서비스
+
+
+제7조(회원정보 사용에 대한 동의)
+① 당 사이트가 처리하는 모든 개인정보는 개인정보 보호법 등 관련 법령상의 개인정보보호 규정을 준수하여 이용자의 개인정보 보호 및 권익을 보호합니다.
+② 당 사이트는 다른 법령에 특별한 규정이 있는 경우를 제외하고 귀하가 당 사이트 서비스 가입시 동의하여 제공하는 정보에 한하여 최소한으로 수집합니다.
+③ 당 사이트와 행정기관 타 사이트간의 회원정보 통합관리와 관련하여 본인이 동의한 경우에는 개인정보 등 관련정보를 행정기관 타 사이트에 제공할 수 있습니다.
+④ 회원이 당 사이트에 본 약관에 따라 이용신청을 하는 것은 당 사이트가 본 약관에 따라 신청서에 기재된 회원정보를 수집, 이용하는 것에 동의하는 것으로 간주됩니다.
+⑤ 당 사이트는 회원정보의 진위여부 및 소속기관의 확인 등을 위하여 확인절차를 거칠 수도 있습니다.
+
+제8조(사용자의 정보 보안)
+① 가입 신청자가 당 사이트 서비스 가입 절차를 완료하는 순간부터 귀하는 입력한 정보의 비밀을 유지할 책임이 있으며, 회원의 ID와 비밀번호를 사용하여 발생하는 모든 결과에 대한 책임은 회원본인에게 있습니다.
+② ID와 비밀번호에 관한 모든 관리의 책임은 회원에게 있으며, 회원의 ID나 비밀번호가 부정하게 사용되었다는 사실을 발견한 경우에는 즉시 당 사이트에 신고하여야 합니다. 신고를 하지 않음으로 인한 모든 책임은 회원 본인에게 있습니다.
+③ 이용자는 당 사이트 서비스의 사용 종료시 마다 정확히 접속을 종료하도록 해야 하며, 정확히 종료하지 아니함으로써 제3자가 귀하에 관한 정보를 이용하게 되는 등의 결과로 인해 발생하는 손해 및 손실에 대하여 당 사이트는 책임을 부담하지 아니합니다.
+④ 비밀번호 분실 시 통보는 이메일 또는 단문 메시지 서비스(SMS)로 안내하며, 전 항의 규정에도 불구하고 회원의 이메일 주소 또는 휴대전화번호 기입 잘못 등 본인 과실 및 본인 정보 관리 소홀로 발생하는 문제의 책임은 회원에게 있습니다.
+⑤ 이용자는 개인정보 보호 및 관리를 위하여 서비스의 개인정보관리에서 수시로 개인정보를 수정/삭제할 수 있습니다.
+
+제9조(서비스 이용시간)
+① 서비스 이용시간은 당 사이트의 업무상 또는 기술상 특별한 지장이 없는 한 연중무휴, 1일 24시간을 원칙으로 합니다.
+② 제1항의 이용시간은 정기점검 등의 필요로 인하여 당 사이트가 정한 날 또는 시간은 예외로 합니다.
+
+제10조(서비스의 중지 및 정보의 저장과 사용)
+① 귀하는 당 사이트 서비스에 보관되거나 전송된 메시지 및 기타 통신 메시지 등의 내용이 국가의 비상사태, 정전, 당 사이트의 관리 범위 외의 서비스 설비 장애 및 기타 불가항력에 의하여 보관되지 못하였거나 삭제된 경우, 전송되지 못한 경우 및 기타 통신 데이터의 손실이 있을 경우에 당 사이트는 관련 책임을 부담하지 아니합니다.
+② 당 사이트가 정상적인 서비스 제공의 어려움으로 인하여 일시적으로 서비스를 중지하여야 할 경우에는 서비스 중지 1주일 전의 고지 후 서비스를 중지할 수 있으며, 이 기간 동안 귀하가 고지내용을 인지하지 못한 데 대하여 당 사이트는 책임을 부담하지 아니합니다. 부득이한 사정이 있을 경우 위 사전 고지기간은 감축되거나 생략될 수 있습니다. 또한 위 서비스 중지에 의하여 본 서비스에 보관되거나 전송된 메시지 및 기타 통신 메시지 등의 내용이 보관되지 못하였거나 삭제된 경우, 전송되지 못한 경우 및 기타 통신 데이터의 손실이 있을 경우에 대하여도 당 사이트는 책임을 부담하지 아니합니다.
+③ 당 사이트의 사정으로 서비스를 영구적으로 중단하여야 할 경우 제 2 항에 의거합니다. 다만, 이 경우 사전 고지기간은 1개월로 합니다.
+④ 당 사이트는 사전 고지 후 서비스를 일시적으로 수정, 변경 및 중단할 수 있으며, 이에 대하여 귀하 또는 제3자에게 어떠한 책임도 부담하지 아니합니다.
+⑤ 당 사이트는 이용자가 본 약관의 내용에 위배되는 행동을 한 경우, 임의로 서비스 사용을 제한 및 중지할 수 있습니다. 이 경우 당 사이트는 위 이용자의 접속을 금지할 수 있습니다.
+⑥ 당 사이트에 장기간 접속을 하지 아니한 회원의 경우 이메일 또는 공지사항 등을 통한 안내 후 검토 기간을 거쳐 서비스 이용을 중지할 수 있습니다.
+
+제11조(서비스의 변경 및 해지)
+① 당 사이트는 귀하가 서비스를 이용하여 기대하는 손익이나 서비스를 통하여 얻은 자료로 인한 손해에 관하여 책임을 지지 않으며, 회원이 본 서비스에 게재한 정보, 자료, 사실의 신뢰도, 정확성 등 내용에 관하여는 책임을 지지 않습니다.
+② 당 사이트는 서비스 이용과 관련하여 가입자에게 발생한 손해 중 가입자의 고의, 과실에 의한 손해에 대하여 책임을 부담하지 아니합니다.
+③ 당 사이트에 2년을 주기로 개인정보의 수집·이용에 대한 동의를 하지 아니한 회원의 경우 안내 메일 또는 공지사항 발표 후 검토 기간을 거쳐 회원의 정보를 삭제할 수 있습니다.
+
+제12조(정보 제공 및 홍보물 게재)
+① 당 사이트는 회원이 서비스 이용 중 필요하다고 인정되는 다양한 정보 및 광고에 대해서는 이메일, SMS, 메신저 등의 방법으로 회원에게 제공할 수 있으며, 해당 정보를 원하지 않는 회원은 이를 수신거부 할 수 있습니다.
+② 당 사이트는 서비스에 적절하다고 판단되거나 활용 가능성 있는 홍보물을 게재할 수 있습니다.
+
+제13조(당 사이트에 제출된 게시물의 저작권)
+① 귀하가 게시한 게시물의 내용에 대한 권리는 귀하에게 있습니다.
+② 당 사이트는 게시된 내용을 사전 통지 없이 편집, 이동 할 수 있는 권리를 보유하며, 다음의 경우 사전 통지 없이 삭제할 수 있습니다.
+   1. 본 서비스 약관에 위배되거나 상용 또는 불법, 음란, 저속하다고 판단되는 게시물을 게시한 경우
+   2. 다른 회원 또는 제 3자를 비방하거나 중상 모략으로 명예를 손상시키는 내용인 경우
+   3. 공공질서 및 미풍양속에 위반되는 내용인 경우
+   4. 범죄적 행위에 결부된다고 인정되는 내용일 경우
+   5. 제3자의 저작권 등 기타 권리를 침해하는 내용인 경우
+   6. 기타 관계 법령에 위배되는 경우
+③ 귀하의 게시물이 타인의 저작권을 침해함으로써 발생하는 민, 형사상의 책임은 전적으로 귀하가 부담하여야 합니다.
+
+제14조(사용자의 행동규범 및 서비스 이용제한)
+① 귀하가 제공하는 정보의 내용이 허위인 것으로 판명되거나, 그러하다고 의심할 만한 합리적인 사유가 발생할 경우 당 사이트는 귀하의 본 서비스 사용을 일부 또는 전부 중지할 수 있으며, 이로 인해 발생하는 불이익에 대해 책임을 부담하지 아니합니다.
+② 귀하가 당 사이트 서비스를 통하여 게시, 전송, 입수하였거나 전자메일 기타 다른 수단에 의하여 게시, 전송 또는 입수한 모든 형태의 정보에 대하여는 귀하가 모든 책임을 부담하며 당 사이트는 어떠한 책임도 부담하지 아니합니다.
+③ 당 사이트는 당 사이트가 제공한 서비스가 아닌 가입자 또는 기타 유관기관이 제공하는 서비스의 내용상의 정확성, 완전성 및 질에 대하여 보장하지 않습니다. 따라서 당 사이트는 귀하가 위 내용을 이용함으로 인하여 입게 된 모든 종류의 손실이나 손해에 대하여 책임을 부담하지 아니합니다.
+④ 귀하는 본 서비스를 통하여 다음과 같은 행동을 하지 않는데 동의합니다.
+   1. 타인의 아이디(ID)와 비밀번호를 도용하는 행위
+   2. 저속, 음란, 모욕적, 위협적이거나 타인의 프라이버시를 침해할 수 있는 내용을 전송, 게시, 게재, 전자메일 또는 기타의 방법으로 전송하는 행위
+   3. 서비스를 통하여 전송된 내용의 출처를 위장하는 행위
+   4. 법률, 계약에 의하여 이용할 수 없는 내용을 게시, 게재, 전자메일 또는 기타의 방법으로 전송하는 행위
+   5. 타인의 특허, 상표, 영업비밀, 저작권, 기타 지적재산권을 침해하는 내용을 게시, 게재, 전자메일 또는 기타의 방법으로 전송하는 행위
+   6. 당 사이트의 승인을 받지 아니한 광고, 판촉물, 정크메일, 스팸, 행운의 편지, 피라미드 조직 기타 다른 형태의 권유를 게시, 게재, 전자메일 또는 기타의 방법으로 전송하는 행위.
+   7. 다른 사용자의 개인정보를 수집 또는 저장하는 행위
+   8. 컴퓨터 소프트웨어, 하드웨어, 전기통신 장비를 파괴, 방해 또는 기능을 제한하기 위한 소프트웨어 바이러스를 게시, 게재 또는 전자우편으로 보내는 행위
+   9. 서비스의 안정적인 운영에 지장을 주거나 줄 우려가 있는 일체의 행위
+⑤ 당 사이트는 회원이 본 약관을 위배했다고 판단되면 서비스와 관련된 모든 정보를 이용자의 동의 없이 삭제할 수 있습니다.
+
+제3장 의무 및 책임
+
+제15조(당 사이트의 의무)
+① 당 사이트는 법령과 본 약관이 금지하거나 미풍양속에 반하는 행위를 하지 않으며, 지속적, 안정적으로 서비스를 제공하기 위해 노력할 의무가 있습니다.
+② 당 사이트는 서비스 제공과 관련하여 취득한 회원의 정보를 본인의 승낙 없이 타인에게 누설 또는 배포할 수 없으며, 상업적 목적으로 사용할 수 없습니다. 다만, 전기통신관련법령 등 관계법령에 의하여 관계 국가기관 등의 요구가 있는 경우에는 그러하지 아니합니다.
+③ 당 사이트는 이용자가 안전하게 당 사이트서비스를 이용할 수 있도록 이용자의 개인정보 (신용정보 포함) 보호를 위한 보안시스템을 갖추어야 합니다.
+④ 당 사이트는 이용자의 귀책사유로 인한 서비스 이용 장애에 대하여 책임을 지지 않습니다.
+⑤ 당 사이트는 서비스와 관련한 이용자의 불만사항이 접수되는 경우 이를 즉시 처리하여야 하며, 즉시 처리가 곤란한 경우 이용자에게 그 사유와 처리일정을 당 사이트, 전화, 이메일, 팩스 등으로 통보하여야 합니다.
+
+제16조(회원의 의무)
+① 회원 가입시에 요구되는 정보는 정확하게 기입하여야 합니다. 또한 이미 제공된 귀하에 대한 정보가 정확한 정보가 되도록 유지, 갱신하여야 하며, 회원은 자신의 ID 및 비밀번호를 제3자에게 이용하게 해서는 안됩니다.
+② 회원은 당 사이트의 사전 승낙 없이 서비스를 이용하여 어떠한 영리행위도 할 수 없습니다.
+③ 회원은 당 사이트 서비스를 이용하여 얻은 정보를 당 사이트의 사전승낙 없이 복사, 복제, 변경, 번역, 출판·방송 기타의 방법으로 사용하거나 이를 타인에게 제공할 수 없습니다.
+④ 회원은 당 사이트 서비스 이용과 관련하여 다음 각 호의 행위를 하여서는 안됩니다.
+   1. 다른 회원의 ID를 부정 사용하는 행위
+   2. 범죄행위를 목적으로 하거나 기타 범죄행위와 관련된 행위
+   3. 선량한 풍속, 기타 사회질서를 해하는 행위
+   4. 타인의 명예를 훼손하거나 모욕하는 행위
+   5. 타인의 지적재산권 등의 권리를 침해하는 행위
+   6. 해킹행위 또는 컴퓨터바이러스의 유포행위
+   7. 타인의 의사에 반하여 광고성 정보 등 일정한 내용을 지속적으로 전송하는 행위
+   8. 서비스의 안전적인 운영에 지장을 주거나 줄 우려가 있는 일체의 행위
+   9. 당 사이트에 게시된 정보의 변경
+
+제4장 기 타
+
+제17조 (당 사이트의 소유권)
+① 당 사이트가 제공하는 서비스, 그에 필요한 소프트웨어, 이미지, 마크, 로고, 디자인, 서비스명칭, 정보 및 상표 등과 관련된 지적재산권 및 기타 권리는 해당 저작권자 또는 행정안전부에 귀속됩니다.
+② 귀하는 당 사이트가 명시적으로 승인한 경우를 제외하고는 전항의 소정의 각 재산에 대한 전부 또는 일부의 수정, 대여, 대출, 판매, 배포, 제작, 양도, 재라이센스, 담보권 설정 행위, 상업적 이용 행위를 할 수 없으며, 제3자로 하여금 이와 같은 행위를 하도록 허락할 수 없습니다.
+
+제18조 (양도금지)
+회원이 서비스의 이용권한, 기타 이용계약 상 지위를 타인에게 양도, 증여할 수 없으며, 이를 담보로 제공할 수 없습니다.
+
+제19조 (손해배상)
+당 사이트는 무료로 제공되는 서비스와 관련하여 회원에게 어떠한 손해가 발생하더라도 당 사이트가 고의로 행한 범죄행위를 제외하고 이에 대하여 책임을 부담하지 아니합니다.
+
+제20조 (면책조항)
+① 당 사이트는 제10조에 따라 서비스가 중지됨으로써 이용자에게 손해가 발생하더라도 이로 인한 책임을 부담하지 않습니다.
+② 당 사이트는 서비스에 표출된 어떠한 의견이나 정보에 대해 확신이나 대표할 의무가 없으며 회원이나 제3자에 의해 표출된 의견을 승인하거나 반대하거나 수정하지 않습니다. 당 사이트는 어떠한 경우라도 회원이 서비스에 담긴 정보에 의존해 얻은 이득이나 입은 손해에 대해 책임이 없습니다.
+③ 당 사이트는 회원간 또는 회원과 제3자간에 서비스를 매개로 하여 물품거래 혹은 금전적 거래 등과 관련하여 어떠한 책임도 부담하지 아니하고, 회원이 서비스의 이용과 관련하여 기대하는 이익에 관하여 책임을 부담하지 않습니다.
+
+제21조 (관할법원)
+본 사이트와 이용자 간에 발생한 서비스 이용에 관한 분쟁에 대하여는 대한민국 법을 적용하며, 본 분쟁으로 인한 소는 행정안전부 주소지의 관할 법원에 제기합니다.
+
+부칙
+본 약관은 2021년 12월 01일부터 시행됩니다.
+
+</textarea>
+</td>
+</tr>
+<tr>
+<td height=40 align=left   valign=bottom><b>[개인정보 보호정책]</b></td>
+</tr>
+<tr>
+<td height=50 align=left>
+<textarea cols=128 rows=13 readonly="readonly" style="font-size:8pt; font-family:Tahoma a;">
+
+< 마블하우스 >('index.html'이하 '마블하우스')은(는) 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
+
+○ 이 개인정보처리방침은 2021년 12월 1부터 적용됩니다.
+
+
+제1조(개인정보의 처리 목적)
+
+< 마블하우스 >('index.html'이하 '마블하우스')은(는) 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며 이용 목적이 변경되는 경우에는 「개인정보 보호법」 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.
+
+1. 홈페이지 회원가입 및 관리
+
+회원 가입의사 확인 목적으로 개인정보를 처리합니다.
+
+
+2. 재화 또는 서비스 제공
+
+물품배송, 서비스 제공을 목적으로 개인정보를 처리합니다.
+
+
+3. 마케팅 및 광고에의 활용
+
+이벤트 및 광고성 정보 제공 및 참여기회 제공 , 서비스의 유효성 확인 등을 목적으로 개인정보를 처리합니다.
+
+
+
+
+제2조(개인정보의 처리 및 보유 기간)
+
+① < 마블하우스 >은(는) 법령에 따른 개인정보 보유·이용기간 또는 정보주체로부터 개인정보를 수집 시에 동의받은 개인정보 보유·이용기간 내에서 개인정보를 처리·보유합니다.
+
+② 각각의 개인정보 처리 및 보유 기간은 다음과 같습니다.
+
+1.<홈페이지 회원가입 및 관리>
+<홈페이지 회원가입 및 관리>와 관련한 개인정보는 수집.이용에 관한 동의일로부터<3년>까지 위 이용목적을 위하여 보유.이용됩니다.
+보유근거 : 사이트 정책
+관련법령 :
+예외사유 :
+
+
+제3조(개인정보의 제3자 제공)
+
+① < 마블하우스 >은(는) 개인정보를 제1조(개인정보의 처리 목적)에서 명시한 범위 내에서만 처리하며, 정보주체의 동의, 법률의 특별한 규정 등 「개인정보 보호법」 제17조 및 제18조에 해당하는 경우에만 개인정보를 제3자에게 제공합니다.
+
+② < 마블하우스 >은(는) 다음과 같이 개인정보를 제3자에게 제공하고 있습니다.
+
+1. < >
+개인정보를 제공받는 자 :
+제공받는 자의 개인정보 이용목적 :
+제공받는 자의 보유.이용기간:
+
+
+제4조(개인정보처리 위탁)
+
+① < 마블하우스 >은(는) 원활한 개인정보 업무처리를 위하여 다음과 같이 개인정보 처리업무를 위탁하고 있습니다.
+
+1. < >
+위탁받는 자 (수탁자) :
+위탁하는 업무의 내용 :
+위탁기간 :
+② < 마블하우스 >은(는) 위탁계약 체결시 「개인정보 보호법」 제26조에 따라 위탁업무 수행목적 외 개인정보 처리금지, 기술적?관리적 보호조치, 재위탁 제한, 수탁자에 대한 관리?감독, 손해배상 등 책임에 관한 사항을 계약서 등 문서에 명시하고, 수탁자가 개인정보를 안전하게 처리하는지를 감독하고 있습니다.
+
+③ 위탁업무의 내용이나 수탁자가 변경될 경우에는 지체없이 본 개인정보 처리방침을 통하여 공개하도록 하겠습니다.
+
+
+
+제5조(정보주체와 법정대리인의 권리·의무 및 그 행사방법)
+
+
+
+① 정보주체는 마블하우스에 대해 언제든지 개인정보 열람·정정·삭제·처리정지 요구 등의 권리를 행사할 수 있습니다.
+
+② 제1항에 따른 권리 행사는마블하우스에 대해 「개인정보 보호법」 시행령 제41조제1항에 따라 서면, 전자우편, 모사전송(FAX) 등을 통하여 하실 수 있으며 마블하우스은(는) 이에 대해 지체 없이 조치하겠습니다.
+
+③ 제1항에 따른 권리 행사는 정보주체의 법정대리인이나 위임을 받은 자 등 대리인을 통하여 하실 수 있습니다.이 경우 “개인정보 처리 방법에 관한 고시(제2020-7호)” 별지 제11호 서식에 따른 위임장을 제출하셔야 합니다.
+
+④ 개인정보 열람 및 처리정지 요구는 「개인정보 보호법」 제35조 제4항, 제37조 제2항에 의하여 정보주체의 권리가 제한 될 수 있습니다.
+
+⑤ 개인정보의 정정 및 삭제 요구는 다른 법령에서 그 개인정보가 수집 대상으로 명시되어 있는 경우에는 그 삭제를 요구할 수 없습니다.
+
+⑥ 마블하우스은(는) 정보주체 권리에 따른 열람의 요구, 정정·삭제의 요구, 처리정지의 요구 시 열람 등 요구를 한 자가 본인이거나 정당한 대리인인지를 확인합니다.
+
+
+
+제6조(처리하는 개인정보의 항목 작성)
+
+① < 마블하우스 >은(는) 다음의 개인정보 항목을 처리하고 있습니다.
+
+1< 홈페이지 회원가입 및 관리 >
+필수항목 : 이메일, 휴대전화번호, 자택주소, 비밀번호, 로그인ID, 이름, 접속 로그, 결제기록
+선택항목 :
+
+
+제7조(개인정보의 파기)
+
+
+① < 마블하우스 ] 은(는) 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체없이 해당 개인정보를 파기합니다.
+
+② 정보주체로부터 동의받은 개인정보 보유기간이 경과하거나 처리목적이 달성되었음에도 불구하고 다른 법령에 따라 개인정보를 계속 보존하여야 하는 경우에는, 해당 개인정보를 별도의 데이터베이스(DB)로 옮기거나 보관장소를 달리하여 보존합니다.
+1. 법령 근거 :
+2. 보존하는 개인정보 항목 : 계좌정보, 거래날짜
+
+③ 개인정보 파기의 절차 및 방법은 다음과 같습니다.
+1. 파기절차
+< 마블하우스 > 은(는) 파기 사유가 발생한 개인정보를 선정하고, < 마블하우스 > 의 개인정보 보호책임자의 승인을 받아 개인정보를 파기합니다.
+
+2. 파기방법
+
+전자적 파일 형태의 정보는 기록을 재생할 수 없는 기술적 방법을 사용합니다
+
+
+
+제8조(개인정보의 안전성 확보 조치)
+
+[ 마블하우스 ]은(는) 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다.
+
+1. 정기적인 자체 감사 실시
+개인정보 취급 관련 안정성 확보를 위해 정기적(분기 1회)으로 자체 감사를 실시하고 있습니다.
+
+2. 해킹 등에 대비한 기술적 대책
+[마블하우스]('마블하우스')은 해킹이나 컴퓨터 바이러스 등에 의한 개인정보 유출 및 훼손을 막기 위하여 보안프로그램을 설치하고 주기적인 갱신·점검을 하며 외부로부터 접근이 통제된 구역에 시스템을 설치하고 기술적/물리적으로 감시 및 차단하고 있습니다.
+
+
+
+
+제9조(개인정보 자동 수집 장치의 설치?운영 및 거부에 관한 사항)
+
+
+
+마블하우스 은(는) 정보주체의 이용정보를 저장하고 수시로 불러오는 ‘쿠키(cookie)’를 사용하지 않습니다.
+
+제10조 (개인정보 보호책임자)
+
+① 마블하우스 은(는) 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.
+
+▶ 개인정보 보호책임자
+성명 :이병한
+직책 :학생
+직급 :학생
+연락처 :010-2249-4723, 20183022@cwnu.co.kr,
+※ 개인정보 보호 담당부서로 연결됩니다.
+
+▶ 개인정보 보호 담당부서
+부서명 :
+담당자 :
+연락처 :, ,
+② 정보주체께서는 마블하우스 의 서비스(또는 사업)을 이용하시면서 발생한 모든 개인정보 보호 관련 문의, 불만처리, 피해구제 등에 관한 사항을 개인정보 보호책임자 및 담당부서로 문의하실 수 있습니다. 마블하우스 은(는) 정보주체의 문의에 대해 지체 없이 답변 및 처리해드릴 것입니다.
+
+제11조(개인정보 열람청구)
+정보주체는 ?개인정보 보호법? 제35조에 따른 개인정보의 열람 청구를 아래의 부서에 할 수 있습니다.
+[ 마블하우스 ]은(는) 정보주체의 개인정보 열람청구가 신속하게 처리되도록 노력하겠습니다.
+
+▶ 개인정보 열람청구 접수·처리 부서
+부서명 :
+담당자 :
+연락처 : , ,
+
+
+제12조(권익침해 구제방법)
+
+
+
+정보주체는 개인정보침해로 인한 구제를 받기 위하여 개인정보분쟁조정위원회, 한국인터넷진흥원 개인정보침해신고센터 등에 분쟁해결이나 상담 등을 신청할 수 있습니다. 이 밖에 기타 개인정보침해의 신고, 상담에 대하여는 아래의 기관에 문의하시기 바랍니다.
+
+1. 개인정보분쟁조정위원회 : (국번없이) 1833-6972 (www.kopico.go.kr)
+2. 개인정보침해신고센터 : (국번없이) 118 (privacy.kisa.or.kr)
+3. 대검찰청 : (국번없이) 1301 (www.spo.go.kr)
+4. 경찰청 : (국번없이) 182 (ecrm.cyber.go.kr)
+
+「개인정보보호법」제35조(개인정보의 열람), 제36조(개인정보의 정정·삭제), 제37조(개인정보의 처리정지 등)의 규정에 의한 요구에 대 하여 공공기관의 장이 행한 처분 또는 부작위로 인하여 권리 또는 이익의 침해를 받은 자는 행정심판법이 정하는 바에 따라 행정심판을 청구할 수 있습니다.
+
+※ 행정심판에 대해 자세한 사항은 중앙행정심판위원회(www.simpan.go.kr) 홈페이지를 참고하시기 바랍니다.
+
+제13조(개인정보 처리방침 변경)
+
+
+① 이 개인정보처리방침은 2021년 12월 1부터 적용됩니다.
+
+</textarea>
+</td>
+</tr>
+<tr>
+<td height=50 align=center>
+<table border=0 cellpadding=0   cellspacing=0>
+	<tr><td><font style='font-size:8pt; font-family:Tahoma;'>위의 이용약관과 개인정보 보호 정책에 동의하십니까?  &nbsp;&nbsp;</td>
+	<td>[<a href=join2.html><font style='text-decoration:none;'> YES </font></a>]</td>
+	<td>&nbsp;[<a href=index.html><font style='text-decoration:none;'> NO </font></a>]</td>
+  
+	</tr>
+	</table>
+</td>
+</tr>
+</table>
+
+
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[join2.html]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+<script   language='Javascript'>
+function   id_check() {
+var id = document.comma.uid.value;
+if (id.length < 5) {
+	window.alert('ID는 5글자 이상 입력해주세요');
+} else {
+	window.open('id_check.php?id=' + id, 'IDCHECK', 'width=450, height=180, scrollbars=yes');
+}
+}
+
+function   go_zip() {
+window.open('zipcode.php','ZIP','width=470, height=180, scrollbars=yes');
+}
+</script>
+
+<form action=register.php method=post name=comma>
+
+<table width=670 border=0 cellpadding=0 cellspacing=5  align=center>
+<tr><td height=40 align=center><b>[회원 가입 폼]</b></td></tr>
+</table>
+
+<table border=1 width=670 align=center>
+<tr><td>
+
+     <table width=670 border=0 radius=10px align=center>
+ <tr>
+    <td width=5% align=right>*</td>
+	<td width=15%   height=30><font size=2>회원 ID</td>
+	<td width=80%><input type=text size=10 name=uid><font size=2>[<a   href='javascript:id_check()'>ID중복검사</a>]</font></td>
+ </tr>
+ <tr>
+	<td   align=right>*</td>
+	<td height=30><font size=2>비밀번호</font></td>
+	<td><input type=password   maxlength=15 style="height:20;" size=20 name=upass1></td>
+ </tr>
+ <tr>
+	<td align=right>*</td>
+	<td height=30><font size=2>비밀번호확인</font></td>
+	<td><input type=password   maxlength=15 style="height:20;" size=20 name=upass2></td>
+ </tr>
+ <tr>
+	<td align=right>*</td>
+	<td height=30><font size=2>이 름</font></td>
+	<td><input type=text size=10 name=uname></td>
+ </tr>
+ <tr>
+	<td align=right>*</td>
+	<td height=30><font size=2>휴대전화</font></td>
+	<td><input type=text size=20 name=mphone></td>
+ </tr>
+ <tr>
+	<td align=right>*</td>
+	<td height=30><font size=2>이메일</td>
+	<td><input type=text size=30 name=email></td>
+ </tr>
+ <tr>
+	<td align=right>*</td>
+	<td height=30><font size=2>집주소</td>
+	<td><input type=text size=7   name=zip readonly=readonly><font size=2>[<a   href='javascript:go_zip()'>우편번호검색</a>]</font><br><input type=text size=50 name=addr1 readonly=readonly><br><input   type=text size=35 name=addr2></td>
+</tr>
+</table>
+
+  </td></tr>
+</table>
+  
+<table width=670 border=0 cellpadding=0 cellspacing=5  align=center>
+<tr><td height=40 align=center><input type=submit value="회원가입신청"></td></tr>
+</table>
+
+</form>
+
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[id_check.php]
+<script language='Javascript'>
+function a() {
+   var id = document.idcheck.newid.value;
+   if (id == '') {
+        window.alert('아이디를 입력해 주세요!')
+   } else {
+if (id.length < 5) 
+             window.alert('아이디를 5글자 이상 입력해 주세요!')
+          else 
+             document.idcheck.submit();
+   }
+}
+
+function b() {
+    opener.comma.uid.value = document.idcheck.id.value;
+    this.close();
+}
+</script>
+
+<form method=post action=id_check.php name=idcheck>
+<table border=1 align=center width=400>
+<tr><td height=130 align=center>
+
+<?
+
+if   (isset($newid)) $id = $newid;
+
+$con = mysql_connect("localhost", "root", "apmsetup");
+mysql_select_db("shopmall", $con);
+	
+$result = mysql_query("select * from member where uid='$id'",$con);
+$total = mysql_num_rows($result);
+	
+if ($total == 0) {
+echo ("<font size=2 color=red><b>$id</b></font><font size=2> 은(는) 사용 가능한   아이디입니다.<br>사용하시겠습니까?<br><br>[<a href='javascript:b()'> <input type=hidden name=id value='$id'>YES</a>]<br><br>* <b>아이디</b> <input type=text name=newid   size=20>&nbsp;&nbsp;<a href='javascript:a()'>ID중복검사</a>");
+} else {
+echo "<font size=2 color=red><b>$id</b></font><font size=2> 은(는) 이미 사용중인 아이디입니다.<br>다른 아이디를 입력해 주세요.<br><br><br>* <b>아이디 </b> <input type=text   name=newid size=20>&nbsp;&nbsp;<a href='javascript:a()'>ID중복검사</a>";
+}
+
+mysql_close($con);
+
+?>
+
+</td></tr>
+</table>
+</form>
+
+[zipcode.php]
+ <table border=0 width=420 height=130>
+<tr height=15><td align=center>
+<font size=2>주소를 검색하실 <b>동(Dong)</b> 이름을 입력하세요</font> 
+</td></tr>
+<tr><td>--------------------------------------------------</td></tr>
+<form method=post action=zip-process.php>
+<tr><td   align=center>
+<input type=text name=key size=20>&nbsp;<input type=submit value='검색'><br><font style="font-size:8pt; font-family:Tahoma;">(입력 예: 사림동, 삼문리, 대치1동) 
+</td></tr>
+</form>
+<tr><td>--------------------------------------------------</td></tr>
+</table>
+
+[zip-process.php]
+<script   language='JavaScript'>
+	function   okzip(zip, address) {
+		opener.document.comma.zip.value = zip;
+		opener.document.comma.addr1.value =   address;
+		opener.comma.addr2.value='';
+		opener.comma.addr2.focus();
+		self.close();
+	}
+</script>
+
+<?
+$con = mysql_connect("localhost", "root", "apmsetup");
+mysql_select_db("shopmall", $con);
+	
+mysql_query("set names 'euckr'");
+$result = mysql_query("select * from zipcode where dong like '%$key%'", $con);
+$total = mysql_num_rows($result);
+	  	
+$i = 0;
+	
+echo ("
+	<center>
+	<font size=2>[<b>$key</b>]으로 검색한 결과입니다. 우편번호를 선택하세요
+	<table border=1 align=center width=420 height=130 cellpadding=3 cellspacing=0>
+");
+	
+while($i <  $total):
+	$zip = mysql_result($result, $i, "ZIPCODE");
+	$sido = mysql_result($result, $i, "SIDO");
+	$gugun = mysql_result($result, $i, "GUGUN");
+	$dong = mysql_result($result, $i, "DONG");
+	$bunji = mysql_result($result, $i, "BUNJI");
+
+	$address = $sido . " " . $gugun   . " " .  $dong;
+
+	echo ("<tr><td><font size=2>&nbsp;<a href=\"javascript: okzip('$zip',   '$address')\">$zip</a>&nbsp;&nbsp;&nbsp;&nbsp;$sido   $gugun $dong $bunji </td></tr>");
+			  
+	$i++;
+endwhile;
+
+echo ("</table>");
+mysql_close($con);
+
+?>
+
+[register.php]
+<?
+
+if (!$uid) {
+	echo ("<script>
+		window.alert('사용자 ID를 입력하세요');
+		history.go(-1);
+		</script>");
+	exit;
+}
+if (!$upass1) {
+	echo ("<script>
+		window.alert('비밀번호를 입력해 주세요');
+		history.go(-1);
+		</script>");
+	exit;
+}
+if ($upass1 != $upass2) {
+	echo ("<script>
+		window.alert('비밀번호와 비밀번호 확인이 일치하지 않습니다');
+		history.go(-1);
+		</script>");
+	exit;
+}
+if (!$uname) {
+	echo ("<script>
+		window.alert('이름을 입력해 주세요');
+		history.go(-1);
+		</script>");
+	exit;
+}	
+	
+$con = mysql_connect("localhost", "root", "apmsetup");
+mysql_select_db("shopmall", $con);
+	
+$result = mysql_query("insert into member(uid, upass,uname, mphone, email, zipcode, addr1, addr2, approved) values ('$uid', '$upass1', '$uname', '$mphone', '$email', '$zip', '$addr1', '$addr2', 0)", $con);
+	
+if ($result) {
+    echo ("<script>
+		window.alert('MARBLE House 회원 가입을 축하드립니다.\\n관리자의 승인을 거쳐야 로그인이 가능합니다');
+		history.go(1);
+		</script>
+   ");
+} else {
+    echo ("<script>
+		window.alert('회원가입에 실패했습니다. 다시 한 번 시도해 주세요');
+		history.go(-1);
+		</script>
+	");	   
+}
+	
+mysql_close($con);
+echo   ("<meta http-equiv='Refresh' content='0; url=index.html'>");
+	
+?>
+
+[login.php]
+<?
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+	
+$result = mysql_query("select * from member where uid='$uid'", $con);
+$total = mysql_num_rows($result);
+
+if (!$total){
+	echo("<script>
+		window.alert('아이디가 존재하지 않습니다')
+		history.go(-1)
+		</script> ");
+	 exit;
+} else {
+	$pass = mysql_result($result, 0, "upass");
+	$uname = mysql_result($result, 0, "uname");
+	$approved = mysql_result($result, 0, "approved");
+
+	if ($approved == 0) {
+		echo("<script>
+				window.alert('관리자의 회원 승인이 완료되지 않았습니다')
+				history.go(-1)
+				</script> ");
+		exit;
+	} 
+		
+	if ($pass != $upass) {
+		echo("<script>
+			window.alert('비밀번호가 맞지 않습니다')
+			history.go(-1)
+			</script> ");
+		exit;
+	} else {
+		SetCookie("UserID", "$uid", 0);
+		SetCookie("UserName", "$uname", 0);
+		 
+		// $session = md5(uniqid(rand()));
+		// SetCookie("Session", $session, 0);
+				
+		// mysql_query("delete from shoppingbag where id='$uid'", $con);
+			 
+		echo ("<meta http-equiv='Refresh' content='0; url=index.html'>"); 
+	}
+}
+mysql_close($con);
+
+?>
+
+[logout.php]
+<?
+
+// $con = mysql_connect("localhost", "root", "apmsetup");
+// mysql_select_db("shopmall", $con);
+	
+// mysql_query("delete from shoppingbag where id='$UserID'", $con);
+// mysql_close($con);
+	
+ SetCookie("UserID", "", time());
+ SetCookie("UserName", "", time());
+
+// SetCookie("Session", "", time());
+	 
+echo ("<meta http-equiv='Refresh' content='0; url=index.html'>");
+
+?>
+
+[findidpw.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+<center><font size=3><b>사용자 ID 찾기</b></center>
+<table align=center border=0 width=400>
+<form method=post action=findid.php onsubmit="if(!this.uname.value ||   !this.email.value) return false;">
+<tr><td align=right><font size=2>이름(실명)</td>
+<td align=left><input type=text   size=20 name=uname></td></tr>
+<tr><td align=right><font size=2>이메일주소</td>
+<td align=left><input type=text   size=40 name=email></td></tr>
+<tr><td align=center colspan=2><input type=submit value='아이디 확인'></tr>
+</form>
+</table>
+<br><br>
+<center><font size=3><b>사용자 비밀번호 찾기</b></center>
+<table align=center border=0 width=400>
+<form method=post action=findpw.php onsubmit="if(!this.uid.value ||   !this.uname.value || !this.email.value) return false;">
+<tr><td align=right><font size=2>사용자ID</td>
+<td align=left><input type=text size=20 name=uid></td></tr>
+<tr><td align=right><font size=2>이름(실명)</td>
+<td align=left><input type=text size=20 name=uname></td></tr>
+<tr><td   align=right><font style='font-size:10pt; font-family:Tahoma;'>이메일주소</td>
+<td align=left><input type=text size=40 name=email></td></tr>
+<tr><td align=center colspan=2><input type=submit value='비밀번호 확인'></tr>
+</form>
+</table>
+
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[findid.php]
+<?
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+
+$result = mysql_query("select * from member where uname='$uname' and   email='$email'", $con);
+$total = mysql_num_rows($result);
+
+if (!$total)   {
+   echo("<script>
+      window.alert('입력하신 이름과 이메일 주소를 동시에 만족하는 사용자 아이디가 없습니다')
+      history.go(-1)
+      </script>
+   ");
+   exit;
+} else {
+	$uid = mysql_result($result, 0, "uid");
+    echo("<script>
+        window.alert('귀하의 아이디는 $uid 입니다')
+        </script>
+   ");
+}
+
+mysql_close($con);	
+echo   ("<meta http-equiv='Refresh' content='0; url=index.html'>");
+?>
+
+[findpw.php]
+<?
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+
+$result = mysql_query("select * from member where uname='$uname' and uid='$uid'   and email='$email'", $con);
+$total = mysql_num_rows($result);
+
+if (!$total)   {
+   echo("
+      <script>
+      window.alert('입력하신 아이디와 이름과 이메일 주소를 동시에 만족하는 사용자 아이디가 없습니다')
+      history.go(-1)
+      </script>
+   ");
+   exit;
+} else {
+	$upass = mysql_result($result, 0, "upass");
+   echo("
+      <script>
+      window.alert('귀하의 비밀번호는 $upass 입니다')
+      </script>
+   ");
+}
+
+mysql_close($con);	
+echo   ("<meta http-equiv='Refresh' content='0; url=index.html'>");
+?>
+
+[tobag.php]
+<?
+
+if (!$UserID) {
+	echo ("<script>
+		window.alert('로그인 사용자만 구매 가능합니다')
+		history.go(-1)
+		</script>");
+      exit;
+} 
+if ($quantity < 1 || $quantity > 100) {
+	echo ("<script>
+		window.alert('변경하고자 하는 수량이 범위를 초과합니다')
+		history.go(-1)
+		</script>");
+      exit;
+}
+
+if (!isset($quantity)) $quantity = 1;
+
+$con =   mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+
+// 이미 쇼핑백에 담은 물건이면 수량만 보탬 
+$result = mysql_query("select * from shoppingbag where session='$Session' and pcode='$code'", $con);
+$total = mysql_num_rows($result);
+
+if ($total) $oldnum = mysql_result($result, 0, "quantity");
+
+if ($oldnum) {
+     $quantity = $oldnum + $quantity;
+     mysql_query("update shoppingbag set quantity=$quantity where   session='$Session' and pcode='$code'", $con);
+} else {
+     mysql_query("insert into shoppingbag(id, session, pcode, quantity) values ('$UserID','$Session', '$code', $quantity)", $con);
+}
+
+mysql_close($con);	//데이터베이스 연결해제
+
+echo ("<meta http-equiv='Refresh' content='0; url=showbag.php'>");
+
+?>
+
+[showbag.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+<?
+if (!isset($UserID)) {
+	echo ("<script>
+		window.alert('로그인 사용자만 이용하실 수 있어요')
+		history.go(-1)
+		</script>");
+	exit;
+}
+?>
+<br>
+<table  width=100% cellspacing=0 >
+<tr><td width=18% height=20 align=center bgcolor=black style="border: thin solid; border-radius:10px;"><font color=white size=5><b>쇼핑카트<b></font></td>
+	<td align=right><font size=4>[<a href=index.html style="color:black;" onMouseover="this.style.color='red'"onMouseout="this.style.color='black'"><b>Back</b></a>]</td></tr>
+<tr border=1><td bgcolor=black width=100% height=5 colspan=2></td></tr>
+<tr><td align=right colspan=2><font size=2><b><? echo $UserName; ?></b>님의 현재 쇼핑 카트 내용</td></tr>
+</table>
+
+
+<?
+$con =   mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+
+// 전체 쇼핑백 테이블에서 특정 사용자의 구매 정보만을 읽어낸다
+$result = mysql_query("select * from shoppingbag where session='$Session'", $con);
+$total = mysql_num_rows($result);
+
+echo ("
+	<table border=0 cellspacing=0 width=690 style='border: 1px solid black; '>
+	<tr><td><br></td></tr>
+    <tr><td width=100 align=center style='border: 1px solid #444444; border-radius:10px;'><font size=2>상품사진</td>
+	<td width=300 align=center style='border: 1px solid #444444; border-radius:10px;'><font size=2>상품이름</td>
+	<td width=90 align=center style='border: 1px solid #444444; border-radius:10px;'><font size=2>가격(단가)</td>
+	<td width=120 align=center style='border: 1px solid #444444; border-radius:10px;'><font size=2>수량</td>
+	<td width=100 align=center style='border: 1px solid #444444; border-radius:10px;'><font size=2>품목별합계</td>
+	<td width=50 align=center style='border: 1px solid #444444; border-radius:10px;'><font size=2>삭제</td></tr>
+	<tr><td><br></td></tr>
+");
+
+if (!$total) {
+     echo("<tr><td colspan=6 align=center><font size=2>쇼핑백에 담긴 상품이 없습니다.</td></tr></table>");
+} else {
+
+    $counter=0;
+    $totalprice=0;    // 총 구매 금액  
+
+    while ($counter < $total) :
+       $pcode = mysql_result($result, $counter, "pcode");
+       $quantity = mysql_result($result, $counter, "quantity");
+   
+       $subresult = mysql_query("select * from product where code='$pcode'", $con);
+       $userfile = mysql_result($subresult, 0, "userfile");
+       $pname = mysql_result($subresult, 0, "name");
+
+       $price = mysql_result($subresult, 0, "price2");
+       
+       $subtotalprice = $quantity * $price;
+       $totalprice = $totalprice + $subtotalprice; 
+
+		echo ("<tr><td align=center>
+			<a href=# onclick=\"window.open('./photo/$userfile', '_new', 'width=450,   height=450')\"><img src='./photo/$userfile' width=50   border=0></a></td>
+			<td align=left><font size=2><a   href=p-show.php?code=$pcode>$pname </a></td>
+			<td align=right><font size=2>$price&nbsp;원</td>
+			<td align=center>
+			<form method=post action=qmodify.php?pcode=$pcode><input type=text name=newnum size=3 value=$quantity>&nbsp;<input type=submit value=변경>
+			</td></form>
+			<td align=right><font size=2>$subtotalprice&nbsp;원</td>
+			<td align=center>
+			<form method=post action=itemdelete.php?pcode=$pcode><input type=submit value=삭제></td></form>
+			</tr>
+			<tr><td colspan=6><font size=5> - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - -</font></td></tr>");
+
+		$counter++;
+    endwhile;
+ 	
+     echo("<tr><td colspan=6 align=right><font size=2>총 구매 금액: $totalprice 원</td></tr></table>");
+
+}
+
+mysql_close($con);	//데이터베이스 연결해제
+
+echo ("<table width=690 border=0>
+		<tr><td align=right>
+		<button style='background-color:orange; border-radius:10px; height:40;'><font size=4px ><a href=buy.php style='color:black;'><b>구매결정</b></a></font></button>
+		<button style='background-color:orange; border-radius:10px; height:40;'><font size=4px><a href=p-list.php style='color:black;'><b>쇼핑계속</b></a></font></button>
+		</tr></td>
+	</table>");
+
+?>
+
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[q-modift.php]
+<?
+
+if ($newnum < 1 || $newnum > 100) {
+	echo ("<script>
+		window.alert('변경하고자 하는 수량이 범위를 초과합니다')
+		history.go(-1)
+		</script>");
+    exit;
+}
+	
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+
+$result = mysql_query("update shoppingbag set quantity=$newnum where session='$Session' and pcode='$pcode'", $con);
+
+mysql_close($con);
+
+echo ("<meta http-equiv='Refresh' content='0; url=showbag.php'>");
+
+?>
+
+[itemdelete.php]
+<?
+
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+
+$result = mysql_query("delete from shoppingbag where session='$Session' and pcode='$pcode'", $con);
+
+mysql_close($con);
+
+echo ("<meta http-equiv='Refresh' content='0; url=showbag.php'>");
+
+?>
+
+[zipcode2.php]
+<table border=0 width=420 height=130>
+<tr height=15><td align=center><font size=2>주소를 검색하실 <b>동(Dong)</b>   이름을 입력하세요</font></td></tr>
+<tr><td>--------------------------------------------------</td></tr>
+<form method=post action=zip2-process.php>
+<tr><td align=center>
+     <input type=text name=key size=20> <input type=submit value='검색'> <br><font style="font-size:8pt; font-family:Tahoma;">(입력 예: 사림동, 삼문리, 대치1동) 
+</td></tr>
+</form>
+<tr><td>--------------------------------------------------</td></tr>
+</table>
+
+[endshopping.php]
+<?
+
+if (!$receiver){
+	echo("
+		<script>
+		window.alert('수신자 이름이 없습니다. 다시 입력하세요.')
+		history.go(-1)
+		</script>
+	");
+	exit;
+}
+
+if(!$phone){
+	echo("
+		<script>
+		window.alert('수신자의 전화번호가 없습니다. 다시 입력하세요.')
+		history.go(-1)
+		</script>
+	");
+	exit;
+}
+
+if(!$addr1){
+	echo("
+		<script>
+		window.alert('배송 주소가 없습니다. 다시 입력하세요.')
+		history.go(-1)
+		</script>
+	");
+	exit;
+}
+
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+
+$before_point = mysql_query("select * from member where uid='$UserID'", $con);
+$total_point  = $before_point  + $point ;
+mysql_query("update member set point='$total_point' where uid='$UserID'", $con);
+
+$buydate = date("Y-m-d H:i:s");	// 구매 날짜 저장
+
+$ordernum = strtoupper(substr($UserID, 0, 3)) . "-" . substr($buydate, 0, 10); 
+
+$address = "(" . $zip .  ")" . "&nbsp;" . $addr1 . "&nbsp;" . $addr2;
+
+// 배송지 주소와 구매 번호를 테이블에 저장
+mysql_query("insert into   receivers(id, session, sender, receiver, phone, address, message, buydate,   ordernum, status) values ('$UserID', '$Session', '$UserName',   '$receiver','$phone', '$address', '$message', '$buydate', '$ordernum', 1)", $con);
+
+// 전체 쇼핑백 테이블에서 구매 정보를 읽어내어 복사
+$result = mysql_query("select * from shoppingbag where session='$Session'", $con);
+$total = mysql_num_rows($result);
+
+$counter=0;
+
+while ($counter < $total) :
+	$pcode = mysql_result($result, $counter, "pcode");
+    $quantity = mysql_result($result, $counter, "quantity");
+      
+    // 쇼핑백 내용을 하나씩 구매 완료 리스트에 복사
+    mysql_query("insert into orderlist(id, session, pcode, quantity)   values ('$UserID', '$Session', '$pcode','$quantity')", $con);
+	 	 	 
+    $counter++;
+endwhile;
+
+// 구매 완료한 정보는 쇼핑백 테이블에서 모두 삭제
+
+
+mysql_query("delete from shoppingbag   where session='$Session'",$con);
+mysql_close($con);	 
+
+
+echo ("<script>
+ 	window.alert('구매가 정상적으로 처리되었습니다. \\n주문 번호는 $ordernum 이며 My Page에서 주문 조회가 가능합니다')
+    history.go(1)
+    </script>
+    <meta http-equiv='Refresh' content='0; url=index.html'>");
+
+?>
+
+[buy.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+<script language='Javascript'>
+	function go_zip(){
+		window.open('zipcode2.php', 'zipcode',   'width=470, height=180, scrollbars=yes');
+	}
+</script>
+<br>
+	<table  width=100% cellspacing=0 >
+	<tr><td width=23% height=20 align=center bgcolor=black style='border: thin solid; border-radius:10px;'><font color=white size=5><b>상품구매 목록<b></font></td>
+	<td align=right><font size=4>[<a href=index.html style='color:black;' onMouseover='this.style.color='red''onMouseout='this.style.color='black'><b>Back</b></a>]</td></tr>
+	<tr border=1><td bgcolor=black width=100% height=5 colspan=2></td></tr>
+	</table>
+<table width=690 border=0>
+<tr><td align=right><font size=2><b><? echo $UserName; ?></b>님의 구입 예정   품목</td>
+</table>
+<br>
+
+<?
+
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+
+// 전체 쇼핑백 테이블에서 특정 사용자의 구매 정보만을 읽어낸다
+$result = mysql_query("select * from shoppingbag where session='$Session'", $con);
+$total = mysql_num_rows($result);
+
+echo ("
+	<table border=1 cellspacing=0 width=690>
+    <tr><td width=100 align=center><font size=2>상품사진</td>
+	<td width=300 align=center><font size=2>상품이름</td>
+	<td width=90 align=center><font size=2>가격(단가)</td>
+	<td width=50 align=center><font ssize=2>수량</td>
+	<td width=100 align=center><font size=2>품목별합계</td></tr>
+	");
+
+if (!$total) {
+     echo("<tr><td colspan=5 align=center><font   size=2><b>쇼핑백에 담긴 상품이   없습니다.</b>
+        </font></td></tr></table>");
+} else {
+
+    $counter=0;
+    $totalprice=0;    // 총 구매 금액  
+
+    while ($counter < $total) :
+		$pcode = mysql_result($result, $counter, "pcode");
+		$quantity = mysql_result($result, $counter, "quantity");
+      
+		$subresult = mysql_query("select * from product where code='$pcode'", $con);
+		$userfile = mysql_result($subresult, 0, "userfile");
+		$pname = mysql_result($subresult, 0, "name");
+		$price = mysql_result($subresult, 0, "price2");
+       
+		$subtotalprice = $quantity * $price;
+		$totalprice = $totalprice + $subtotalprice; 
+		$point = ( $subtotalprice / 100 ) ;
+		
+		echo("<tr><td align=center><a href=#   onclick=\"window.open('./photo/$userfile', '_new', 'width=450, height=450')\"><img src='./photo/$userfile' width=50 border=0></a></td>
+			<td align=left><font size=2><a href=p-show.php?code=$pcode>$pname</a></td>
+			<td align=right><font size=2>$price&nbsp;원</td>
+			<td align=center><font size=2>$quantity&nbsp;개</td>
+			<td align=right><font size=2>$subtotalprice&nbsp;원</td></tr>
+			");
+
+		$counter++;
+
+    endwhile;
+ 
+     echo("<tr><td colspan=5 align=right><font size=2>총 구매 금액: $totalprice 원</td></tr></table>");
+}
+
+mysql_close($con);	//데이터베이스 연결해제
+
+echo ("<br>
+		<table border=0 width=690>
+        <tr><td align=center><font size=2>입금 계좌: <b>하나은행 595-910154-33707 (예금주: 홍길동)</b><br><br>
+		* 구입하신 물품은 입금 확인후 배송되며, 주문 진행 상황은 My Page에서 확인하실 수 있습니다.<br>
+		* 물품 배송 이전에 주문 취소를 원하시면 My Page에서 직접 주문 취소 요청을 하시면 됩니다.<br>
+		* 물품을 배송 받으신 후에 구매 취소를 원하시면 고객센터(전화:070-8236-4423)로 연락주세요.
+       </td></tr>
+       </table>");
+
+echo("
+    <br><br>
+	<br>
+	<table  width=100% cellspacing=0 >
+	<tr><td width=23% height=20 align=center bgcolor=black style='border: thin solid; border-radius:10px;'><font color=white size=5><b>배송정보 목록<b></font></td><td></td></tr>
+	<tr border=1><td bgcolor=black width=100% height=5 colspan=2></td></tr>
+	</table>
+	<br>
+	<table width=690 border=0>
+	<form method=post action=endshopping.php name=buy>
+	<tr><td align=right><font size=2>받는이</td>
+	<td><input type=text name=receiver size=10></td>
+	</tr>
+	<tr>
+	<td align=right><font size=2>전화번호</td>
+	<td><input type=text name=phone   size=20></td>
+	</tr>
+	<tr><td height=30 align=right><font size=2>배송주소</td>
+	<td align=left><input type=text size=6 name=zip readonly=readonly>
+	<font size=2>[<a href='javascript:go_zip()'>우편번호검색</a>]<br>
+	<input type=text size=55 name=addr1 readonly=readonly style='font-size:10pt; font-family:Tahoma;'>
+	<input type=text size=30 name=addr2 style='font-size:10pt; font-family:Tahoma;'></td>
+	<tr><td align=right><font size=2>주문요구사항</td>
+	<td><textarea name=message rows=3 cols=65></textarea></td></tr>
+	<tr><td align=center colspan=2>
+	<input type=submit value=구매완료></td></tr>
+	</table>
+	<input type='hidden' name=point value=$point>
+	</form>
+	</center>
+");
+
+?>
+
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[zip2-process.php]
+<script language='JavaScript'>
+	function okzip(zip, address) {
+		opener.document.buy.zip.value = zip;
+		opener.document.buy.addr1.value =   address;
+		opener.buy.addr2.value='';
+		opener.buy.addr2.focus();
+		self.close();
+	}
+</script>
+<?
+$con = mysql_connect("localhost", "root", "apmsetup");
+mysql_select_db("shopmall",   $con);
+	
+mysql_query("set names   'euckr'");
+$result = mysql_query("select * from zipcode where dong like '%$key%'", $con);
+$total = mysql_num_rows($result);
+	  	
+$i = 0;
+echo ("<center>
+	<font size=2>[<b>$key</b>]으로 검색한 결과입니다. 우편번호를 선택하세요
+	<table border=1 align=center   width=420 height=130 cellpadding=3 cellspacing=0>");
+	
+while($i < $total):
+	$zip = mysql_result($result, $i, "ZIPCODE");
+	$sido = mysql_result($result, $i, "SIDO");
+	$gugun = mysql_result($result, $i,  "GUGUN");
+	$dong = mysql_result($result, $i,  "DONG");
+	$bunji = mysql_result($result, $i,  "BUNJI");
+	$address = $sido .  "&nbsp;" . $gugun . "&nbsp;" .  $dong;
+
+	echo ("<tr><td><font size=2>&nbsp;<a href=\"javascript: okzip('$zip', '$address')\">$zip</a>&nbsp;&nbsp;&nbsp;&nbsp;$address $bunji </td></tr>");
+			  
+	$i++;
+endwhile;
+
+echo ("</table>");
+mysql_close($con);
+?>
+
+[register2.php]
+<?
+
+if (!$upass1) {
+	echo ("<script>
+		window.alert('비밀번호를 입력해 주세요');
+		history.go(-1);
+		</script>");
+	exit;
+}
+
+if ($upass1 != $upass2) {
+	echo ("<script>
+		window.alert('비밀번호와 비밀번호 확인이 일치하지 않습니다');
+		history.go(-1);
+		</script>");
+	exit;
+}
+
+if (!$uname) {
+	echo ("<script>
+		window.alert('이름을 입력해 주세요');
+		history.go(-1);
+		</script>");
+	exit;
+}	
+
+if (!$mphone) {
+	echo ("<script>
+		window.alert('휴대폰 번호를 입력해 주세요');
+		history.go(-1);
+		</script>");
+	exit;
+}	
+
+if (!$email) {
+	echo ("<script>
+		window.alert('이메일 주소를 입력해주세요');
+		history.go(-1);
+		 </script>");
+	exit;
+}	
+
+$con = mysql_connect("localhost", "root", "apmsetup");
+mysql_select_db("shopmall",   $con);
+	
+$result = mysql_query("update member set upass='$upass1', uname='$uname', mphone='$mphone', email='$email', zipcode='$zip', addr1='$addr1', addr2='$addr2' where uid='$UserID'", $con);
+	
+if ($result) {
+	echo ("<script>
+		window.alert('회원 정보 수정이 완료되었습니다');
+		history.go(1);
+		 </script>
+     ");
+} else {
+    echo ("<script>
+		window.alert('회원 정보 수정에 실패했습니다. 다시 한번 시도해 주세요');
+		history.go(-1);
+		 </script>
+	");	   
+}
+	
+mysql_close($con);
+	
+echo ("<meta http-equiv='Refresh'  content='0; url=logout.php'>");
+	
+?>
+
+[mypage.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+<?
+$con = mysql_connect("localhost", "root", "apmsetup");
+mysql_select_db("shopmall",   $con);
+$result = mysql_query("select * from member where uid='$UserID'", $con);
+	
+$uid = mysql_result($result, 0,   "UID");
+$uname = mysql_result($result, 0,   "UNAME");
+$email = mysql_result($result, 0,   "EMAIL");
+$zip = mysql_result($result, 0,   "ZIPCODE");
+$addr1 = mysql_result($result, 0,   "ADDR1");
+$addr2 = mysql_result($result, 0,   "ADDR2");
+$mphone = mysql_result($result, 0,   "MPHONE");
+$point = mysql_result($result, 0,   "POINt");
+
+?>
+<br>
+<table  width=100% cellspacing=0 >
+<tr><td width=18% height=20 align=center bgcolor=black style="border: thin solid; border-radius:10px;"><font color=white size=5><b>회원정보<b></font></td>
+	<td align=right><font size=4>[<a href=index.html style="color:black;" onMouseover="this.style.color='red'"onMouseout="this.style.color='black'"><b>Back</b></a>]</td></tr>
+<tr border=1><td bgcolor=black width=100% height=5 colspan=2></td></tr>
+</table>
+<br>
+<table border=1 cellspacing=0 width=690>
+<tr><td width=100><font size=2>이름</td>
+<td width=120><font size=2><? echo $uname; ?></td>
+<td width=80><font size=2>휴대전화</td>
+<td width=140><font size=2><? echo $mphone; ?></td>
+<td width=80><font size=2>이메일</td>
+<td width=170><font size=2><? echo $email; ?></td></tr>
+<tr><td><font size=2>주소</td>
+<td colspan=5><font   size=2><? echo $zip . " " . $addr1 . " " . $addr2;   ?></td></tr>
+<tr><td>현재 포인트</td><td colspan=5><b><? echo $point; ?></b>포인트</td></tr>
+</table>
+<table align=right><tr><td><button style='background-color:orange; border-radius:8px;'><a href=umodify.php style="color:black;" onMouseover="this.style.color='red'"onMouseout="this.style.color='black'"><b>회원정보수정</b></a></td></tr></table>
+<br><br>
+
+<?
+$result = mysql_query("select * from receivers where id='$UserID' order by buydate desc", $con);
+$total = mysql_num_rows($result);
+
+echo ("
+	<br>
+	<table  width=100% cellspacing=0 >
+	<tr><td width=18% height=20 align=center bgcolor=black style='border: thin solid; border-radius:10px;'><font color=white size=5><b>구매내역<b></font></td>
+	<td align=right></td></tr>
+	<tr border=1><td bgcolor=black width=100% height=5 colspan=2></td></tr>
+	</table>
+	<br>
+
+	<table border=1 cellspacing=0 width=690>
+	<tr><td align=center><font size=2>구매번호</td>
+	<td align=center><font size=2>구매일자</td>
+	<td align=center><font size=2>주문내역</td>
+	<td align=center><font size=2>금액</td>
+	<td align=center><font size=2>주문상태</td></tr>");	
+
+if ($total > 0) {	
+	$counter = 0;
+	while($counter < $total) :
+		$session = mysql_result($result, $counter, "session");
+		$buydate = mysql_result($result, $counter, "buydate");
+		$ordernum = mysql_result($result, $counter, "ordernum");
+		$status = mysql_result($result, $counter, "status");
+		$oldstatus = $status;
+	 
+		switch ($status) {
+		  case 1:
+				$status = "주문신청";
+				break;
+		  case 2:
+				$status = "주문접수";
+				break;
+		  case 3: 
+				$status = "배송준비중";
+				break;
+		  case 4:
+				$status = "배송중";
+				break;
+		  case 5:
+				$status = "배송완료";
+				break;
+		  case 6:
+				$status = "구매완료";
+				break;
+		}
+	 
+		$subresult = mysql_query("select * from orderlist where session='$session'",   $con);
+        $subtotal =  mysql_num_rows($subresult);
+
+        $subcounter=0;
+        $totalprice=0;
+
+        while ($subcounter <   $subtotal) :
+             $pcode = mysql_result($subresult, $subcounter, "pcode");
+             $quantity = mysql_result($subresult, $subcounter, "quantity");
+      
+             $tmpresult = mysql_query("select * from product where code='$pcode'", $con);
+             $pname = mysql_result($tmpresult, 0, "name");
+			 $price = mysql_result($tmpresult, 0, "price2");
+       
+             $subtotalprice = $quantity * $price;
+             $totalprice = $totalprice + $subtotalprice;
+             $subcounter++;
+        endwhile;
+	
+		$items = $subtotal - 1;
+	
+        echo ("<tr><td align=center><font size=2>
+			<a href=# onclick=\"window.open('detailview.php?ordernum=$ordernum', '_new',   'width=940, height=250, scrollbars=yes');\">$ordernum</a></td><td   align=center><font size=2>$buydate</td>
+			<td><font size=2>$pname 외 $items 종</td><td align=right><font   size=2>$totalprice 원</td>
+			<td align=center><font size=2>$status");
+      
+		if ($oldstatus < 4) echo ("<br><button style='background-color:orange; border-radius:8px;'><a href=ordercancel.php?ordernum=$ordernum style='color:black;' onMouseover='this.style.color='red''onMouseout='this.style.color='black'>주문취소</a>");
+
+		echo ("</td></tr>");
+
+		$counter++;
+	endwhile;
+
+} else {
+
+	echo ("<tr><td align=center colspan=5><font size=2><b>주문 내역이 존재하지 않습니다</b></td></tr>");
+
+}
+
+echo ("</table>");
+
+mysql_close($con);
+
+?>
+	<table width=690 border=0>
+	<tr><td>* <font color=red   size=2>주문 물품이 배송 이전 단계이면 온라인으로 주문   취소가 가능합니다.</td></tr>
+	<tr><td>* <font size=2>배송중이거나 구매 완료된 제품에 대한 반품 및 환불 요청은     당사 고객센터(전화: 070-4065-8670)로 문의바랍니다.</td></tr>
+	</table>
+
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[imodify.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+
+<br>
+<table  width=100% cellspacing=0 >
+<tr><td width=25% height=20 align=center bgcolor=black style="border: thin solid; border-radius:10px;"><font color=white size=5><b>회원정보 수정<b></font></td>
+	<td align=right><font size=4>[<a href=index.html style="color:black;" onMouseover="this.style.color='red'"onMouseout="this.style.color='black'"><b>Back</b></a>]</td></tr>
+<tr border=1><td bgcolor=black width=100% height=5 colspan=2></td></tr>
+</table>
+<br>
+
+<? 
+$con =   mysql_connect("localhost", "root", "apmsetup");
+mysql_select_db("shopmall",   $con);
+	
+$result = mysql_query("select * from member where uid='$UserID'", $con);
+	
+$uname = mysql_result($result, 0, "uname");
+$email = mysql_result($result, 0, "email");
+$zip = mysql_result($result, 0, "zipcode");
+$addr1 = mysql_result($result, 0,  "addr1");
+$addr2 = mysql_result($result, 0,  "addr2");
+$mphone = mysql_result($result, 0, "mphone");
+	
+echo ("
+	<script language='Javascript'>
+	function go_zip(){
+		window.open('zipcode.php','ZIP','width=470, height=180, scrollbars=yes');
+	}
+	</script>
+
+	<form action=register2.php method=post name=comma>
+	<table border=1 cellspacing=0 width=670>
+	<tr><td>
+		<table width=670 border=0 align=center>
+			<tr><td width=5% align=right>*</td>
+			<td width=15% height=30><font size=2>회원 ID</td>
+			<td width=80%><font   size=2><b>$UserID</b></td></tr>
+			<tr><td align=right>*</td>
+			<td height=30><font size=2>비밀번호</font></td>
+			<td><input type=password   maxlength=15 style='height:20;' size=20 name=upass1></td></tr>
+			<tr><td   align=right>*</td>
+			<td height=30><font size=2>비밀번호확인</font></td>
+			<td><input type=password   maxlength=15 style='height:20;' size=20 name=upass2></td></tr>
+			<tr><td align=right>*</td>
+			<td height=30><font size=2>이 름</font></td>
+			<td><input type=text size=10   name=uname value=$uname></td></tr>
+			<tr><td align=right>*</td>
+			<td height=30><font size=2>휴대전화</font></td>
+			<td><input type=text size=20 name=mphone value=$mphone></td> </tr>
+			<tr><td align=right>*</td>
+		    <td height=30><font size=2>이메일</td>
+		    <td><input type=text size=30 name=email value=$email></td></tr>
+			<tr><td align=right>*</td>
+		    <td height=30><font size=2>집주소</td>
+		    <td><input type=text size=7   name=zip value=$zip readonly=readonly> <font size=2>[<a   href='javascript:go_zip()'>우편번호검색</a>]</font><br>
+			<input type=text size=50 name=addr1 value='$addr1' readonly=readonly><br><input type=text size=35 name=addr2 value='$addr2'> 
+			</td></tr>
+		</table>
+    </td></tr>
+	</table>
+  
+	<table width=670 border=0 cellpadding=0 cellspacing=5>
+	<tr><td height=40 align=center><input type=submit value='회원정보수정'> </td></tr>
+	</table>
+	</form>
+");
+
+?>
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[ordercancel.php]
+<?
+
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+	 
+$result = mysql_query("select * from receivers where ordernum='$ordernum'", $con);
+$total = mysql_num_rows($result);
+
+if ($total) {
+	$session = mysql_result($result, 0, "session");
+ 
+	mysql_query("delete from receivers where ordernum='$ordernum'", $con);
+	mysql_query("delete from orderlist where session='$session'", $con);
+}
+
+echo ("<meta http-equiv='Refresh' content='0; url=mypage.php'>");
+
+mysql_close($con);
+	   
+?>
+
+[detailview.php]
+<?
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+
+$result = mysql_query("select * from receivers where ordernum='$ordernum'", $con);
+$total = mysql_num_rows($result);
+
+$session = mysql_result($result, 0, "session");
+$sender = mysql_result($result, 0, "sender");
+$receiver = mysql_result($result, 0, "receiver");
+$phone = mysql_result($result, 0, "phone");
+$address = mysql_result($result, 0, "address");
+$message = mysql_result($result, 0, "message");
+$buydate = mysql_result($result, 0,  "buydate");
+$status = mysql_result($result, 0, "status");
+	 
+switch ($status) {
+	case 1:
+		$status   = "주문신청";
+		break;
+	case 2:
+		$status   = "주문접수";
+		break;
+	case 3: 
+		$status   = "배송준비중";
+		break;
+	case 4:
+		$status   = "배송중";
+		break;
+	case 5:
+		$status   = "배송완료";
+		break;
+	case 6:
+		$status   = "구매완료";
+		break;
+}
+	 
+echo ("
+    <center><font size=2>주문번호:<b>$ordernum</b> [<font color=red size=2>   <b>$status</b></font>]</center>
+	<table border=1 width=900>
+");
+
+echo ("
+	<tr><td align=center width=100><font size=2>주문번호</td>
+	<td align=center width=150><font size=2>주문일자</td>
+	<td align=center width=550>
+		<table border=0>
+			<tr><td width=390 align=center><font size=2>상품명</td>
+			<td align=center width=40><font size=2>수량</td>
+			<td align=center width=50><font size=2>단가</td>
+			<td align=center width=70><font size=2>금액</td>
+			</tr>
+		</table></td>
+	<td align=center width=100><font size=2>총액</td></tr>
+");	
+
+echo("
+	<tr><td align=center><font size=2>$ordernum</td>
+	<td align=center><font size=2>$buydate</td>
+	<td>
+");
+	
+$subresult = mysql_query("select * from orderlist where session='$session'", $con);
+$subtotal = mysql_num_rows($subresult);
+
+$subcounter=0;
+$totalprice=0;
+          
+while ($subcounter < $subtotal) :
+	$pcode = mysql_result($subresult, $subcounter, "pcode");
+	$quantity = mysql_result($subresult, $subcounter, "quantity");
+	   
+	$tmpresult = mysql_query("select * from product where code='$pcode'", $con);
+
+	$pname = mysql_result($tmpresult, 0,   "name");
+	$price = mysql_result($tmpresult, 0,   "price2");
+		   
+	$subtotalprice = $quantity * $price;
+	$totalprice = $totalprice + $subtotalprice;
+	
+	echo("
+		<table border=0>
+		<tr><td width=390><font size=2>$pname</td>
+		<td align=right width=40><font size=2>$quantity</td>
+		<td align=right width=50><font size=2>$price</td>
+		<td align=right width=70><font size=2>$subtotalprice</td>
+		</tr>
+		</table>
+	");
+	
+     $subcounter++;
+endwhile;
+	
+echo ("
+	</td>
+	<td align=right><font color=red size=2><b>$totalprice</b></td>
+	</tr>
+	</table>
+");
+
+echo ("
+	<table border=1 width=900>
+	<tr><td   align=center><font size=2>주문자명</td>
+	<td align=center><font size=2>수신자명</td>
+	<td align=center><font size=2>수신주소</td>
+	<td align=center><font size=2>수신자연락처</td>
+	</tr>
+");
+
+echo ("
+	<tr><td align=center><font size=2>$sender</td>
+	<td align=center><font size=2>$receiver</td>
+	<td><font size=2>$address</td>
+	<td align=center><font size=2>$phone</td></tr>
+	<tr><td colspan=4><font size=2>주문 메시지: $message</td></tr>
+	</table>
+");
+
+mysql_close($con);
+
+?>
+
+[orderlist.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+<?
+
+if ($UserID != 'admin') {
+	echo ("<script>
+		window.alert('관리자만 접근 가능한 기능입니다')
+		history.go(-1)
+		</script>");
+    exit;
+} 
+
+echo ("<br>
+	<table  width=100% cellspacing=0 >
+	<tr><td width=26% height=20 align=center bgcolor=black style='border: thin solid; border-radius:10px;'><font color=white size=5><b>주문내역 조회<b></font></td>
+	<td align=right><font size=4>[<a href=admin.php style='color:black;' onMouseover='this.style.color='red''onMouseout='this.style.color='black'><b>Back</b></a>]</td></tr>
+	<tr border=1><td bgcolor=black width=100% height=5 colspan=2></td></tr>
+	</table>
+<br>");
+	  	  
+$con = mysql_connect("localhost", "root", "apmsetup");
+mysql_select_db("shopmall",   $con);
+	
+$result = mysql_query("select * from receivers order by buydate desc", $con);
+$total = mysql_num_rows($result);
+
+echo (" <table border=1 width=690>
+	<tr height=25 valign=center>
+	<td align=center width=90><font size=2><b>주문번호</b></td>
+	<td width=140 align=center><font size=2><b>주문일자</b></td>
+	<td width=300 align=center><font size=2><b>주문내역</b></td>
+	<td width=70 align=center><font size=2><b>주문총액</b></td>
+	<td width=90 align=center><font size=2><b>상태변경</b></td></tr>");	
+
+if ($total > 0) {	
+
+	$counter = 0;
+		
+	while($counter < $total) :
+
+		$session =  mysql_result($result, $counter, "session");
+		$buydate = mysql_result($result, $counter, "buydate");
+		$ordernum = mysql_result($result, $counter, "ordernum");
+		$status = mysql_result($result, $counter, "status");
+			 
+		switch ($status) {
+			case 1:
+				$tstatus = "주문신청";
+				break;
+			case 2:
+				$tstatus = "주문접수";
+				break;
+			case 3: 
+				$tstatus = "배송준비중";
+				break;
+			case 4:
+				$tstatus = "배송중";
+				break;
+			case 5:
+				$tstatus = "배송완료";
+				break;
+			case 6:
+				$tstatus = "구매완료";
+				break;
+		}
+		  
+		$subresult = mysql_query("select * from orderlist where session='$session'",   $con);
+		$subtotal = mysql_num_rows($subresult);
+
+		$subcounter=0;
+		$totalprice=0;
+
+		while ($subcounter < $subtotal) :
+			$pcode = mysql_result($subresult, $subcounter, "pcode");
+			$quantity = mysql_result($subresult, $subcounter, "quantity");
+			$tmpresult = mysql_query("select * from product where code='$pcode'", $con);
+			$pname = mysql_result($tmpresult, 0, "name");
+			$price = mysql_result($tmpresult, 0, "price2");
+		   
+			$subtotalprice = $quantity * $price;
+			$totalprice = $totalprice + $subtotalprice;
+			$subcounter++;
+		endwhile;
+		
+		$items = $subtotal - 1;
+		
+		echo ("<tr><td align=center><a href=#   onclick=\"window.open('detailview.php?ordernum=$ordernum', '_new', 'width=940, height=250, scrollbars=yes');\"><font size=2>$ordernum</a></td>
+			<td align=center><font size=2>$buydate</td>
+			<td><font size=2>$pname 외 $items 종</td>
+			<td align=right><font size=2>$totalprice 원</td>
+			<td align=center><font size=2>");
+		if ($status < 6) { 
+			echo ("<a href=changestatus.php?ordernum=$ordernum> <b>$tstatus</b></a></td></tr>");
+		} else {
+		  echo ("<b>$tstatus</b></td></tr>");
+		}
+		
+		$counter++;
+
+	endwhile;
+
+} else {
+       echo ("<tr><td align=center colspan=5><font size=2><b>주문 내역이 존재하지 않습니다</b></td></tr>");
+}
+
+echo ("</table>");
+
+mysql_close($con);
+
+?>
+
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[memberchange.php]
+<?
+
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+
+$result = mysql_query("select approved from member where uid='$uid'", $con);
+$total = mysql_num_rows($result);
+
+if ($total > 0) {
+	$status = mysql_result($result, 0,   "approved");
+	if ($status == 0) $status = 1;
+	else $status = 0;
+} else {
+	echo ("<script>
+		window.alert('회원 정보 조회에 실패했습니다');
+		history.go(1);
+		</script>");
+	exit;
+}
+
+$result = mysql_query("update member set approved=$status where uid='$uid'", $con);
+
+if ($result) {
+	switch ($status) {
+		case   1:
+			echo ("<script>
+				  window.alert('승인이 완료되었습니다');
+				  history.go(1);
+				  </script>");
+			break;
+		case 0:
+			echo ("<script>
+				  window.alert('대기 상태로 변경합니다');
+				  history.go(1);
+				  </script>");
+			break;	
+	}
+} else {
+	echo ("<script>
+		 window.alert('회원 상태 변경에 실패했습니다');
+		 history.go(1);
+		</script>");
+}	
+	
+mysql_close($con);
+
+echo ("<meta http-equiv='Refresh' content='0; url=membershow.php'>");
+
+?>
+
+[membershow.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+<?
+
+if ($UserID != 'admin') {
+	echo ("<script>
+		window.alert('관리자만 접근 가능한 기능입니다')
+		history.go(-1)
+		</script>");
+    exit;
+} 
+
+$con = mysql_connect("localhost", "root", "apmsetup");
+mysql_select_db("shopmall",   $con);
+	
+$result = mysql_query("select * from member order by uname", $con);
+$total = mysql_num_rows($result);
+
+echo ("
+	<br>
+	<table  width=100% cellspacing=0 >
+	<tr><td width=26% height=20 align=center bgcolor=black style='border: thin solid; border-radius:10px;'><font color=white size=5><b>회원 목록 조회<b></font></td>
+	<td align=right><font size=4>[<a href=admin.php style='color:black;' onMouseover='this.style.color='red''onMouseout='this.style.color='black''><b>Back</b></a>]</td></tr>
+	<tr border=1><td bgcolor=black width=100% height=5 colspan=2></td></tr>
+	</table><br> ");
+	   
+$i = 0;	
+
+echo ("
+	<table border=1 cellspacing=0 width=690 bgcolor=white>
+	<tr height=35>
+	<td align=center width=60><font size=2><b>ID</b></td>
+	<td align=center width=50><font   size=2><b>이름</b></td>
+	<td align=center width=340><font size=2><b>주소</b></td>
+	<td align=center width=100><font size=2><b>전화번호</b></td>
+	<td align=center width=100><font size=2><b>이메일</b></td>
+	<td align=center width=40><font size=2><b>승인</b></td></tr>
+");	
+
+while($i < $total):
+	$uid = mysql_result($result, $i, "UID");
+	$uname = mysql_result($result, $i, "UNAME");
+	$zip = mysql_result($result, $i, "ZIPCODE");
+	$addr1 = mysql_result($result, $i, "ADDR1");
+	$addr2 = mysql_result($result, $i, "ADDR2");
+	$mphone = mysql_result($result, $i, "MPHONE");
+	$email = mysql_result($result, $i, "EMAIL");
+	$approved = mysql_result($result, $i, "APPROVED");
+
+	$address = "(" . $zip .   ")" . "&nbsp;" . $addr1 . "&nbsp;" .   $addr2;
+	
+    echo ("<tr height=30><td align=center><font size=2>$uid</td>
+		<td align=center><font size=2>$uname</td>
+		<td><font size=2>$address</td>
+		<td align=center><font size=2>$mphone</td>
+		<td align=center><font size=2>$email</td>");
+		
+	if ($approved == 0) {
+		echo ("<td align=center><a href=memberchange.php?uid=$uid><font size=2>대기</a></td></tr>");
+	} else {
+		echo ("<td align=center><a href=memberchange.php?uid=$uid><font size=2>완료</a></td></tr>");
+	}
+	      
+	$i++;
+endwhile;
+
+echo ("</table>");
+mysql_close($con);
+
+?>
+
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[admin.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+<br>
+<table  width=100% cellspacing=0 >
+<tr><td width=18% height=20 align=center bgcolor=black style="border: thin solid; border-radius:10px;"><font color=white size=5><b>관리 메뉴<b></font></td>
+	<td align=right><font size=4>[<a href=index.html style="color:black;" onMouseover="this.style.color='red'"onMouseout="this.style.color='black'"><b>Back</b></a>]</td></tr>
+<tr border=1><td bgcolor=black width=100% height=5 colspan=2></td></tr>
+</table>
+<br>
+<table border=0 width=100% align=left>
+<tr><td><font size=5><b>▶회원관리</b></td>
+<tr><td><a href=membershow.php style="color:black;" onMouseover="this.style.color='red'"onMouseout="this.style.color='black'"><font size=4>&nbsp &nbsp회원 목록 조회</a></td></tr>
+<tr><td width=40><font size=8><b>- - - - - - - - - - - - - - - - - - -</b></td></tr>
+<tr><td><font size=5><b>▶상품관리</b></td></tr>
+<tr><td><a href=p-input.php style="color:black;" onMouseover="this.style.color='red'"onMouseout="this.style.color='black'"><font size=4>&nbsp &nbsp신규 판매상품 등록</a></td></tr>
+<tr><td><a href=orderlist.php style="color:black;" onMouseover="this.style.color='red'"onMouseout="this.style.color='black'"><font size=4>&nbsp &nbsp주문 내역 조회</a></td></tr>
+<tr><td width=40><font size=8><b>- - - - - - - - - - - - - - - - - - -</b></td></tr>
+<tr><td><font size=5><b>▶주문관리</b></td></tr>
+</tr><td><a href=p-adminlist.php style="color:black;" onMouseover="this.style.color='red'"onMouseout="this.style.color='black'"><font size=4>&nbsp &nbsp판매상품 수정/삭제</a></td></tr>
+</table>
+
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[changestatus.php]
+<?
+
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+
+$result = mysql_query("select status from receivers where ordernum='$ordernum'", $con);
+$total = mysql_num_rows($result);
+
+if ($total > 0) {
+	$status = mysql_result($result, 0, "status");
+	$status = $status + 1;
+} else {
+	$status = 1;
+}
+
+$result = mysql_query("update receivers set status=$status where ordernum='$ordernum'", $con);
+
+mysql_close($con);	
+
+echo ("<meta http-equiv='Refresh' content='0; url=orderlist.php'>");
+
+?>
+
+[show.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+<br>
+	<table cellspacing=0 >
+	<tr><td width=19% height=20 align=center bgcolor=black style='border: thin solid; border-radius:10px;'><font color=white size=5><b>고객 게시판<b></font></td>
+	<td align=right><font size=4>[<a href=index.html style='color:black;' onMouseover='this.style.color='red''onMouseout='this.style.color='black'><b>Back</b></a>]</td></tr>
+	<tr border=1><td bgcolor=black width=100% height=5 colspan=2></td></tr>
+	</table>
+<br>
+
+<?
+ echo ("<style type='text/css'>
+	#t1 {border-bottom:2px dotted red; background-color:#27272B; padding:5px; color:white; }
+	#t2 {border-bottom:2px dotted red; background-color:#BABABC; padding:5px;}
+	#t3 {color:#F2F2F2; font-size:40px; font-weight:bold; padding:15px;}
+	a {text-decoration:none; color:black;}
+	a:hover { text-decoration:underline; color:red;}
+	.pg {color: white;}
+			</style>");
+			
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+$result = mysql_query("select * from board order by id desc", $con);
+$total = mysql_num_rows($result);
+
+echo("
+	<table border=0 align=center width=690><tr id=t1><td>
+		<table border=0 wwidth=690 align=center>
+		<tr id=t1>
+		<td align=right width=50><b>번호</b></td>
+		<td align=center width=100><b>글쓴이</b></td>
+		<td align=center width=400><b>제목</b></td>
+		<td align=center width=150><b>날짜</b></td>
+		<td align=left width=50><b>조회</b></td>
+		</tr></table>
+	</table>
+	<table border=0 width=690 align=center>
+");
+
+if (!$total){
+	echo("<tr id=t2><td colspan=6 align=center>아직 등록된 글이 없습니다.</td></tr>
+	");
+}
+else {
+	if   ($cpage=='') $cpage=1;    // $cpage -  현재 페이지 번호
+	$pagesize = 10;                // $pagesize - 한 페이지에 출력할 목록 개수
+
+	$totalpage = (int)($total/$pagesize);
+	if (($total%$pagesize)!=0) $totalpage = $totalpage + 1;
+
+	$counter=0;
+
+	while($counter<$pagesize):
+		
+		$newcounter=($cpage-1)*$pagesize+$counter;
+		if ($newcounter == $total) break;
+
+		$id=mysql_result($result,$newcounter,"id");
+		$writer=mysql_result($result,$newcounter,"writer");
+		$topic=mysql_result($result,$newcounter,"topic");
+		$hit=mysql_result($result,$newcounter,"hit");
+		$wdate=mysql_result($result,$newcounter,"wdate");
+		$date=substr($wdate,0,10);
+		$space=mysql_result($result,$newcounter,"space");
+		$file=mysql_result($result,$newcounter,"filename");
+		$result1 = mysql_query("select * from boardmemo where id=$id", $con);
+		$total1=mysql_num_rows($result1);
+		$new=$total-5; //새로 적은 글 표시 하기 위함.
+		$t="";
+
+		if   ($space>0) {
+			for ($i=0 ; $i<=$space ; $i++)
+				$t = $t . "&nbsp;";     // 답변 글의 경우 제목 앞 부분에 공백을 채움
+		}
+		
+		echo("
+			<tr bgcolor='#BABABC'>
+			<td align=center width=50>$id</td>
+			<td align=center width=100>$writer</td>");
+		if($hit==0){
+			if(!$file){ //첨부파일이 없을 경우 
+				if($total1!=0){
+					echo("
+						<td align=left width=400>$t<a href=content.php?board=$board&id=$id>$topic [$total1]</a><img src=newmark.png width=20 height=20></td>
+					");
+				}
+				else {
+					echo("
+						<td align=left width=400>$t<a href=content.php?board=$board&id=$id>$topic</a><img src=newmark.png width=20 height=20></td>
+					");
+				}
+			}
+			else{ //첨부파일이 있을경우 표시 남김.
+				if($total1!=0){
+					echo("
+						<td align=left width=400>$t<a href=content.php?board=$board&id=$id>$topic [$total1] </a><img src=filel.png width=15 height=15><img src=newmark.png width=20 height=20></td>
+					");
+				}
+				else {
+					echo("
+						<td align=left width=400>$t<a href=content.php?board=$board&id=$id>$topic </a><img src=filel.png width=15 height=15><img src=newmark.png width=20 height=20></td>
+					");
+				}			
+			}
+		}
+		else{
+			if(!$file){ //첨부파일이 없을 경우 
+				if($total1!=0){
+					echo("
+						<td align=left width=400>$t<a href=content.php?board=$board&id=$id>$topic [$total1]</a></td>
+					");
+				}
+				else {
+					echo("
+						<td align=left width=400>$t<a href=content.php?board=$board&id=$id>$topic</a></td>
+					");
+				}
+			}
+			else{ //첨부파일이 있을경우 표시 남김.
+				if($total1!=0){
+					echo("
+						<td align=left width=400>$t<a href=content.php?board=$board&id=$id>$topic [$total1]   </a><img src=filel.png width=15 height=15></td>
+					");
+				}
+				else {
+					echo("
+						<td align=left width=400>$t<a href=content.php?board=$board&id=$id>$topic    </a><img src=filel.png width=15 height=15></td>
+				");
+				}			
+			}
+		}
+		echo("
+			<td align=center width=150>$date</td>
+			<td align=center width=50>$hit</td>
+			</tr>
+		");
+		$counter = $counter + 1;
+
+	endwhile;
+
+	echo("</table>");
+
+	echo ("<table border=0 width=690 align=center>
+		  <tr><td align=center>");
+		   
+	// 화면 하단에 페이지 번호 출력
+	if ($cblock=='') $cblock=1;   // $cblock - 현재 페이지 블록값
+	$blocksize = 5;             // $blocksize - 화면상에 출력할 페이지 번호 개수
+
+	$pblock = $cblock - 1;      // 이전 블록은 현재 블록 - 1
+	$nblock = $cblock + 1;     // 다음 블록은 현재 블록 + 1
+		
+	// 현재 블록의 첫 페이지 번호
+	$startpage = ($cblock - 1) * $blocksize + 1;	
+
+	$pstartpage = $startpage - 1;  // 이전 블록의 마지막 페이지 번호
+	$nstartpage = $startpage + $blocksize;  // 다음 블록의 첫 페이지 번호
+
+	if ($pblock > 0)        // 이전 블록이 존재하면 [이전블록] 버튼을 활성화
+		echo ("[<a class=pg href=show.php?board=$board&cblock=$pblock&cpage=$pstartpage color=white><STRONG>＜</STRONG></a>] ");
+
+	// 현재 블록에 속한 페이지 번호를 출력	
+	$i =   $startpage;
+	while($i < $nstartpage):
+	   if ($i > $totalpage) break;  // 마지막 페이지를 출력했으면 종료함
+	   echo ("[<a class=pg href=show.php?board=$board&cblock=$cblock&cpage=$i>$i</a>]");
+	   $i = $i + 1;
+	endwhile;
+	 
+	// 다음 블록의 시작 페이지가 전체 페이지 수보다 작으면 [다음블록] 버튼 활성화  
+	if ($nstartpage <= $totalpage)   
+		echo ("[<a class=pg href=show.php?board=$board&cblock=$nblock&cpage=$nstartpage><STRONG>＞</STRONG></a>] ");
+
+	echo ("</td></tr></table>");
+
+}
+
+echo ("<table width=690 align=center>
+<tr><td width=500 align=right>
+<form method=post action=search.php?board=$board >
+<select name=field>
+		<option value=writer>글쓴이</option>
+	<option value=topic>제목</option>
+	<option value=content>내용</option>
+</select>
+<input type=text name=key size=20 height=70></td>
+<td>
+<input type=image src=search.png width=25 height=25 title='검색'>
+</td>
+</form>
+<td align=right><a href=input.php?board=$board><img src='writepencil.png' width=70 height=35 title=\"굴쓰기\"></a>
+</td></tr></table>");
+		
+mysql_close($con);
+
+?>
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[input.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+<br>
+	<table  width=100% cellspacing=0 >
+	<tr><td width=18% height=20 align=center bgcolor=black style='border: thin solid; border-radius:10px;'><font color=white size=5><b>글쓰기<b></font></td>
+	<td align=right><font size=4>[<a href=index.html style='color:black;' onMouseover='this.style.color='red''onMouseout='this.style.color='black'><b>Back</b></a>]</td></tr>
+	<tr border=1><td bgcolor=black width=100% height=5 colspan=2></td></tr>
+	</table>
+<br>
+<?   
+echo("
+		<form method=post action=process.php?board=$board enctype='multipart/form-data'>
+		<table width=690 border=0 align=center>
+		<tr>
+			<td width=100 align=right>이름 </td>
+			<td width=600><input type=text name=writer size=20></td>
+		</tr>
+		<tr>
+			<td align=right>Email </td>
+			<td><input type=text name=email size=40></td>
+		</tr>
+		<tr>
+			<td align=right>제목 </td>
+			<td><input type=text name=topic size=58></td>
+		</tr>
+		<tr>
+			<td align=right valign=top>내용 </td>
+			<td><textarea name=content rows=20 cols=60></textarea></td>
+		</tr>
+		<tr>
+			<td align=right><font size=2>첨부파일</font></td>
+			<td><input type=file name='userfile' size=45 maxlength=80></td>
+		</tr>
+		<tr>
+			<td align=right>암호 </td>
+			<td><input type=password name=passwd size=15></td>
+		</tr>
+		<tr>
+			<td align=right colspan=2>
+			<input type=submit value=등록하기>
+			<input type=reset value=지우기>
+			<a href=show.php?board=$board><input type=button value='취소'></a></td>
+		</tr>
+		</table>
+		</form>
+	</td></tr></table>
+");
+
+?>
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[process.php]
+<?
+
+if (!$writer){
+	echo("
+		<script>
+		window.alert('이름을 입력하세요.')
+		history.go(-1)
+		</script>
+	");
+	exit;
+}
+
+if(!$topic){
+	echo("
+		<script>
+		window.alert('제목을 입력하세요.')
+		history.go(-1)
+		</script>
+	");
+	exit;
+}
+
+if(!$content){
+	echo("
+		<script>
+		window.alert('내용을 입력하세요.')
+		history.go(-1)
+		</script>
+	");
+	exit;
+}
+
+// 데이터베이스에 연결
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+
+$result=mysql_query("select id from board",$con);
+$total=mysql_num_rows($result);
+
+// 글에 대한 id부여
+if (!$total){
+	$id = 1;
+} else {
+	$id = $total + 1;
+}
+
+if ($userfile) {	
+   $savedir = "./pds";	//첨부 파일이 저장될 폴더
+   $temp = $userfile_name;
+   copy ($userfile, "$savedir/$temp");
+   unlink($userfile);
+}
+$wdate = date("Y-m-d-H:i:s");	//   글 쓴 날짜 저장
+
+// 테이블에 입력 글 내용을 저장
+mysql_query("insert into board(id, writer, email, passwd, topic, content, hit, wdate, space, filename, filesize) values('$id','$writer','$email','$passwd','$topic','$content',0,'$wdate',0,'$userfile_name','$userfile_size')", $con);
+
+mysql_close($con);	// 데이터베이스 연결해제
+
+//show.php 프로그램을 호출하면서 테이블 이름을 전달
+echo("<meta http-equiv='Refresh' content='0; url=show.php?board=$board'>");
+
+?>
+
+[content.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+<br>
+	<table  width=100% cellspacing=0 >
+	<tr><td width=18% height=20 align=center bgcolor=black style='border: thin solid; border-radius:10px;'><font color=white size=5><b>게시판</b></font></td>
+	<td align=right><font size=4>[<a href=show.php style='color:black;' onMouseover='this.style.color='red''onMouseout='this.style.color='black'><b>Back</b></a>]</td></tr>
+	<tr border=1><td bgcolor=black width=100% height=5 colspan=2></td></tr>
+	</table>
+<br>
+
+<BODY BGCOLOR="#424242">
+
+<?
+ echo ("<style type='text/css'>
+	#t1 {border-bottom:2px dotted red; background-color:#27272B; padding:5px; color:white; }
+	#t2 {border-bottom:2px dotted red; background-color:#BABABC; padding:5px;}
+	#t3 {border-bottom:2px dotted red; background-color:gray; padding-top:5px; padding-bottom:5px;}
+	#t4 {color:#F2F2F2; font-size:40px; font-weight:bold; padding:15px;}
+	a {text-decoration:none; color:black;}
+	a:hover { text-decoration:underline; color:red;}
+	.pg {color: white;}
+			</style>");
+			
+$con=mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+$result=mysql_query("select * from board where id=$id",$con);
+
+// 각 필드에 해당하는 데이터를 뽑아 내는 과정
+$id=mysql_result($result,0,"id");
+$writer=mysql_result($result,0,"writer");
+$topic=mysql_result($result,0,"topic");
+$hit=mysql_result($result,0,"hit");
+$filename=mysql_result($result,0,"filename");
+$filesize=mysql_result($result,0,"filesize");
+
+$hit = $hit +1;   //조회수를 하나 증가
+mysql_query("update board set hit=$hit where id=$id",$con);
+
+$wdate=mysql_result($result,0,"wdate");
+$email=mysql_result($result,0,"email");
+$content=mysql_result($result,0,"content");
+
+if ($filesize > 1000) {
+	$kb_filesize =   (int)($filesize / 1000);
+	$disp_size = $kb_filesize . ' KBytes';
+} else {
+	$disp_size = $filesize . ' Bytes';
+}
+
+// 테이블로부터 읽은 내용을 화면에 디스플레이
+echo("
+	<table border=0 width=690 align=center>
+		<tr>
+			<td align=right><a href=show.php?board=$board><img src=home.png width=25 height=25></a></td>
+		</tr>
+	</table>
+	<table border=0 align=center width=85%><tr id=t1><td>
+		<table border=0 width=690 align=center>
+		<tr id=t1>
+		<td width=100>번호: $id</td>
+		<td width=200>글쓴이: <a href=mailto:$email>$writer</a></td>
+		<td width=300>작성일자: $wdate</td>
+		<td width=100>조회: $hit</td>
+		</tr></table>
+	</table>
+	<table border=0 align=center width=85%><tr><td>
+		<table border=0 width=690 align=center>
+		<tr>");
+if(!$filesize){
+	echo("<td colspan=4 bgcolor=#f5f5f5>파일:</td>");
+}else{
+	echo("
+	<td colspan=4 bgcolor=#e8e8e8>파일: <a href=./pds/$filename>$filename</a> [ $disp_size ]</td>
+	</tr>
+	");
+}
+
+echo("
+	<tr>
+	<td colspan=4 bgcolor=#f5f5f5>제목: $topic</td>
+	</tr>
+	<tr>
+	<td colspan=4 bgcolor=#fcfcfc><pre>$content</pre></td>
+	</tr>
+	</table>
+
+	<table   border=0 width=690 align=center>
+	<tr ><td align=right>
+	<a href=pass.php?board=$board&id=$id&mode=0 title=\"수정\"><img src=edit.png width=30 height=30></a>
+	<a href=pass.php?board=$board&id=$id&mode=1 title=\"삭제\"><img src=eraser.png width=30 height=30></a>
+	<a href=reply.php?board=$board&id=$id title=\"답변\"><img src=replyl.png width=30 height=30></a>
+	</td></tr>
+	</table><br>
+");
+
+			
+$con =   mysql_connect("localhost", "root", "apmsetup");
+mysql_select_db("shopmall",   $con);
+$result =   mysql_query("select * from boardmemo where id=$id order by wdate desc", $con);
+$total =   mysql_num_rows($result);
+
+echo("<table align=center>");
+if (!$total)   {
+	echo ("<table border=0 align=center width=80%><tr id=t1><td>
+				<table align=center border=0 width=690>
+				<tr id=t1 align=center><td width=50>번호</td><td width=100>이름</td>
+				<td width=150>작성일자</td><td width=400>댓글내용</td></tr></td>
+				</table>
+			</table>
+			<table align=center><tr><td><font color=white>등록된 댓글이 없습니다</font></td></tr></table>");
+		
+} 
+else{
+	echo ("
+			<table align=center border=0 width=690 align=center>
+				<tr id=t1 align=center>
+				<td width=50>번호</td>
+				<td width=80>이름</td>
+				<td width=150>작성일자</td>
+				<td width=300>댓글내용</td>
+				<td width=80></td></tr>
+	");
+
+	$pagesize =   5;	// 한 페이지에 보여 줄 메모 글의 개수
+	if ($mcpage ==  '') $mcpage = 1; 
+	$endpage = (int)($total / $pagesize);
+	if ( ($total % $pagesize) != 0 ) $endpage = $endpage + 1;
+	$i = 0;	
+	while ( $i   < $pagesize ) :
+		$counter = $pagesize * ($mcpage - 1) + $i;
+		if ($counter == $total) break;
+		$num=$i+1;
+		$name = mysql_result($result, $counter, "name");
+		$wdate = mysql_result($result, $counter, "wdate");
+		$date=substr($wdate,0,16);
+		$message = mysql_result($result,   $counter, "message");
+		
+		echo ("
+			<tr bgcolor=white><td align=center>$num</td><td align=center>$name</td>
+			<td align=center>$date</td><td>$message</td>
+			<td align=center><a href=cpass.php?board=$board&id=$id&mode=0&wdate=$wdate&wname=$name&wmemo=$message>수정</a>|<a href=cpass.php?board=$board&id=$id&mode=1&wdate=$wdate>삭제</a></td></tr>
+		");
+		$i++;
+	endwhile;
+	echo ("</table>");
+	}
+echo ("<table border=0 width=690 align=center><tr><td align=center>");	
+$ppage =   $mcpage - 1;
+$npage =   $mcpage + 1;
+if ($mcpage > 1) echo ("[<a href=content.php?mcpage=$ppage&board=$board&id=$id>이전페이지</a>]");
+if ($mcpage < $endpage) echo ("[<a href=content.php?mcpage=$npage&board=$board&id=$id>다음페이지</a>]");
+echo("<br><br>");
+mysql_close($con);
+
+$con = mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+$result = mysql_query("select * from board order by id desc", $con);
+$total = mysql_num_rows($result);
+
+echo("<form method=post align=center action=memo.php?board=$board&id=$id>
+			<table border=0><font color=white>이름
+			<input type=text size=10 name=wname align=center>
+			댓글
+			<input type=text size=30 name=wmemo>
+			암호
+			<input type=password name=wpasswd size=15>&nbsp;&nbsp;
+			<input type=submit value=등록>
+			</font></table></form>");
+echo("
+	<table border=0 width=690 align=center>
+	<tr id=t1 align=center ><td align=center width=50><b>번호</b></td>
+	<td align=center width=100><b>글쓴이</b></td>
+	<td align=center width=400><b>제목</b></td>
+	<td align=center width=150><b>날짜</b></td>
+	<td align=center width=50><b>조회</b></td>
+	</tr>
+");
+
+if (!$total){
+	echo("
+		<tr><td colspan=5 align=center>아직 등록된 글이 없습니다.</td></tr>
+	");
+} else {
+
+	if   ($cpage=='') $cpage=1;    // $cpage -  현재 페이지 번호
+	$pagesize = 5;                // $pagesize - 한 페이지에 출력할 목록 개수
+
+	$totalpage = (int)($total/$pagesize);
+	if (($total%$pagesize)!=0) $totalpage = $totalpage + 1;
+
+	$counter=0;
+
+	while($counter<$pagesize):
+		$newcounter=($cpage-1)*$pagesize+$counter;
+		if ($newcounter == $total) break;
+
+		$idd=mysql_result($result,$newcounter,"id");
+		$writer=mysql_result($result,$newcounter,"writer");
+		$topic=mysql_result($result,$newcounter,"topic");
+		$hit=mysql_result($result,$newcounter,"hit");
+		$wdate=mysql_result($result,$newcounter,"wdate");
+		$date=substr($wdate,0,10);
+		$space=mysql_result($result,$newcounter,"space");
+		$file=mysql_result($result,$newcounter,"filename");
+		$result1 = mysql_query("select * from boardmemo where id=$idd", $con);
+		$total1 = mysql_num_rows($result1);
+
+		$t="";
+
+		if   ($space>0) {
+			for ($i=0 ; $i<=$space ; $i++)
+				$t = $t . "&nbsp;";     // 답변 글의 경우 제목 앞 부분에 공백을 채움
+		}
+		
+		echo("
+			<tr bgcolor='#BABABC'>");
+		if($id==$idd){ //현재 보고있는 글 표시
+			echo("<td align=center>➡</td>");
+		}else{
+			echo("
+				<td align=center>$idd</td>");
+		}
+		echo("
+			<td align=center>$writer</td>");
+		if(!$file){
+			if($total1!=0){
+				echo("
+					<td align=left>$t<a href=content.php?board=$board&id=$idd>$topic [$total1]</a></td>
+				");
+			}
+			else {
+				echo("
+					<td align=left>$t<a href=content.php?board=$board&id=$idd>$topic</a></td>
+				");
+			}
+		}else{
+			if($total1!=0){
+				echo("
+					<td align=left>$t<a href=content.php?board=$board&id=$idd>$topic [$total1]     </a><img src=filel.png width=20 height=16></td>
+				");
+			}
+			else {
+				echo("
+					<td align=left>$t<a href=content.php?board=$board&id=$idd>$topic     </a><img src=filel.png width=20 height=16></td>
+				");
+			}
+		}
+		echo("
+			<td align=center>$date</td><td align=center>$hit</td>
+			</tr>
+		");
+		$counter = $counter + 1;
+	endwhile;
+	echo("</table>");
+	echo ("<table border=0 width=690 align=center>
+		  <tr><td align=center>");		   
+	// 화면 하단에 페이지 번호 출력
+	if ($cblock=='') $cblock=1;   // $cblock - 현재 페이지 블록값
+	$blocksize = 5;             // $blocksize - 화면상에 출력할 페이지 번호 개수
+	$pblock = $cblock - 1;      // 이전 블록은 현재 블록 - 1
+	$nblock = $cblock + 1;     // 다음 블록은 현재 블록 + 1		
+	// 현재 블록의 첫 페이지 번호
+	$startpage = ($cblock - 1) * $blocksize + 1;	
+	$pstartpage = $startpage - 1;  // 이전 블록의 마지막 페이지 번호
+	$nstartpage = $startpage + $blocksize;  // 다음 블록의 첫 페이지 번호
+	if ($pblock > 0)        // 이전 블록이 존재하면 [이전블록] 버튼을 활성화
+		echo ("[<a  class=pg href=content.php?board=$board&id=$id&cblock=$pblock&cpage=$pstartpage><STRONG>＜</STRONG></a>] ");
+	// 현재 블록에 속한 페이지 번호를 출력	
+	$i =   $startpage;
+	while($i < $nstartpage):
+	   if ($i > $totalpage) break;  // 마지막 페이지를 출력했으면 종료함
+	   echo ("[<a  class=pg href=content.php?board=$board&id=$id&cblock=$cblock&cpage=$i>$i</a>]");
+	   $i = $i + 1;
+	endwhile;	 
+	// 다음 블록의 시작 페이지가 전체 페이지 수보다 작으면 [다음블록] 버튼 활성화  
+	if ($nstartpage <= $totalpage)   
+		echo ("[<a  class=pg href=content.php?board=$board&id=$id&cblock=$nblock&cpage=$nstartpage><STRONG>＞</STRONG></a>] ");
+	echo ("</td></tr></table>");
+}
+	
+mysql_close($con);
+
+
+?>
+</table>
+</table>
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[cpass.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+<?
+echo ("<style type='text/css'>
+	#t1 { border: 2px solid white; border-radius: 1em; background-color:#615965;}
+	table,th,td{ color:white; font-weight:bold; }
+			</style>");
+			
+echo ("
+	<table id=t1 align=center><tr><td>
+		<form method=post action=cpass2.php?board=$board&id=$id&mode=$mode&wdate=$wdate&wname=$wname&wmemo=$wmemo>
+		<table border=0 width=400 align=center>
+		<tr><td align=center>암호를 입력하세요</td></tr>
+		<tr><td align=center>암호: <input type=password size=15 name='pass'>
+		<input type=submit value=입력></td></tr>
+		</form>
+		</table>
+	 </td></tr>
+	 </table>
+");
+?>
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[cpass2.php]
+<?
+$con=mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+$result=mysql_query("select passwd from boardmemo where id=$id and wdate='$wdate'",$con);
+$passwd=mysql_result($result,0,"passwd");
+
+if ($pass != $passwd) {            // 암호가 일치하지 않는 경우
+	echo   ("<script>
+		window.alert('입력 암호가 일치하지 않네요');
+		history.go(-1);
+		</script>");
+	exit;		
+} else {                  // 암호가 일치하는 경우
+    switch ($mode) {
+        case 0:          // 수정 프로그램 호출
+            echo("<meta http-equiv='Refresh' content='0; url=cmodify.php?board=$board&id=$id&wdate=$wdate&wname=$wname&wmemo=$wmemo'>");
+            break;
+        case 1:          // 삭제 프로그램 호출
+            echo("<meta http-equiv='Refresh' content='0; url=cdelete.php?board=$board&id=$id&wdate=$wdate'>");
+            break;
+    }   	   
+}  
+
+mysql_close($con);
+
+[pass.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+<?
+echo ("<style type='text/css'>
+	#t1 { border: 2px solid white; border-radius: 1em; background-color:#615965;}
+	table,th,td{ color:white; font-weight:bold; }
+			</style>");
+
+echo ("
+	<table id=t1 align=center><tr><td>
+		<form method=post action=pass2.php?board=$board&id=$id&mode=$mode>
+		<table border=0 width=400 align=center>
+		<tr><td align=center>암호를 입력하세요</td></tr>
+		<tr><td align=center>암호: <input type=password size=15 name='pass'>
+		<input type=submit value=입력></td></tr>
+		</form>
+		</table>
+	 </td></tr></table>
+");
+?>
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[pass2.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+<?
+$con=mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+$result=mysql_query("select passwd from board where id=$id",$con);
+$passwd=mysql_result($result,0,"passwd");
+
+if ($pass != $passwd) {            // 암호가 일치하지 않는 경우
+	echo   ("<script>
+		window.alert('입력 암호가 일치하지 않습니다.');
+		history.go(-1);
+		</script>");
+	exit;		
+} else {                  // 암호가 일치하는 경우
+    switch ($mode) {
+        case 0:          // 수정 프로그램 호출
+            echo("<meta   http-equiv='Refresh' content='0; url=modify.php?board=$board&id=$id'>");
+            break;
+        case 1:          // 삭제 프로그램 호출
+            echo("<meta   http-equiv='Refresh' content='0; url=delete.php?board=$board&id=$id'>");
+            break;
+    }   	   
+}  
+
+mysql_close($con);
+
+?>
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[modify.php]
+<? include ("top.html"); ?>
+  <body style="background-color:#EFEFEF">
+  </body>
+  
+<table border=1 width=900>
+<tr height=600>
+<td width=180 valign=top><? include ("left.html"); ?></td>
+<td width=720 align=center valign=top>
+
+<br>
+	<table  width=100% cellspacing=0 >
+	<tr><td width=18% height=20 align=center bgcolor=black style='border: thin solid; border-radius:10px;'><font color=white size=5><b>글 수정<b></font></td>
+	<td align=right><font size=4>[<a href=show.php style='color:black;' onMouseover='this.style.color='red''onMouseout='this.style.color='black'><b>Back</b></a>]</td></tr>
+	<tr border=1><td bgcolor=black width=100% height=5 colspan=2></td></tr>
+	</table>
+<br>
+
+
+<?
+$con=mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+
+$result=mysql_query("select * from board where id=$id",$con);
+$filename = mysql_result($result, 0,  "filename");
+// 수정하고자 하는 원본 게시물에서 수정 가능한 항목을 추출함
+$writer=mysql_result($result,0,"writer");
+$topic=mysql_result($result,0,"topic");
+$content=mysql_result($result,0,"content");
+$email=mysql_result($result,0,"email");
+$filename =mysql_result($result, 0,"filename");
+echo("<table align=center id=t2><tr><td>
+		<form method=post action=mprocess.php?board=$board&id=$id>
+		<table width=700 border=0 align=center>
+		<tr>
+			<td width=100 align=right>이름 </td>
+			<td width=600><input type=text name=writer size=20 value='$writer'></td>
+		</tr>
+		<tr>
+			<td align=right>Email </td>
+			<td><input type=text name=email size=40 value='$email'></td>
+		</tr>
+		<tr>
+			<td align=right>제목 </td>
+			<td><input type=text name=topic size=60 value='$topic'></td>
+		</tr>
+		<tr>
+			<td align=right valign=top>내용 </td>
+			<td><textarea name=content rows=12 cols=60 id=summernote>$content</textarea></td>
+		</tr>
+		<tr>
+			<td align=right>첨부파일</td>
+			<td><input type=file name='userfile' size=45 maxlength=80>$filename</td>
+		</tr>
+		<tr>
+			<td align=right>암호 </td>
+			<td><input type=password name=passwd size=15></td>
+		</tr>
+		<tr>
+			<td align=right colspan=2>
+			<input type=submit value=수정완료>
+			<input type=reset value=지우기>
+			<a href=show.php?board=$board><input type=button value='취소'></a></td>
+		</tr>
+		</table>
+	</table>
+	</form>");
+
+mysql_close($con);
+
+?>
+</td></tr>
+</table>
+<? include ("bottom.html");   ?>
+
+[delete.php]
+<?
+$con=mysql_connect("localhost","root","apmsetup");
+mysql_select_db("shopmall",$con);
+
+$result = mysql_query("select *  from board where id=$id");
+$filename = mysql_result($result, 0,  "filename");
+
+mysql_query("delete from board where id=$id",$con);
+mysql_query("delete from boardmemo where id=$id",$con);
+unlink("./pds/$filename");
+
+echo("
+	<script>
+	window.alert('글이 삭제 되었습니다.');
+	</script>
+");
+
+// 삭제된 글보다 글 번호가 큰 게시물은 글 번호를 1씩 감소
+$tmp = mysql_query("select id from board order by id desc", $con);
+$last = mysql_result($tmp, 0, "id");     // 가장 마지막 글 번호 추출
+
+$i = $id + 1;       // 삭제된 글의 번호보다 1이 큰 글 번호부터 변경
+while($i <= $last):
+	mysql_query("update board set id=id-1 where id=$i", $con);
+	$i++;
+endwhile;
+
+// 글 삭제 결과를 보여주기 위한 글 목록 보기 프로그램 호출
+echo("<meta http-equiv='Refresh' content='0; url=show.php?board=$board'>");
+
+mysql_close($con);
+
+?>
+
+[memo.php]
+<?
+
+function check($message) {
+	echo ("
+		<script>
+		window.alert(\"$message\");
+		history.go(-1);
+		</script>
+	");
+	exit;
+}
+
+if (!$wname) check("이름을 입력하세요");
+if (!$wmemo) check("내용을 입력하세요");
+$con = mysql_connect("localhost", "root", "apmsetup");
+mysql_select_db("shopmall", $con);
+$wdate = date("Y-m-d-H:i:s");
+
+mysql_query("insert into boardmemo(name,wdate,message,id,passwd) values('$wname', '$wdate','$wmemo',$id,'$wpasswd')", $con);
+
+mysql_close($con);
+
+echo ("<meta http-equiv='Refresh' content='0; url=content.php?board=$board&id=$id'>");
+
+?>

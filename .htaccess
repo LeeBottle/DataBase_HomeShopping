@@ -1,0 +1,19 @@
+# ==============================================================================
+# MARBLE House - Apache .htaccess Configuration
+# ==============================================================================
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # 1. 민감 파일 접근 차단 (.env, .git, .sql 등)
+    RewriteRule ^(\.env|\.git|schema\.sql) - [F,L,NC]
+
+    # 2. 구버전 .html 요청을 .php로 301 리다이렉트
+    RewriteRule ^join\.html$ join.php [R=301,L]
+    RewriteRule ^join2\.html$ join2.php [R=301,L]
+    RewriteRule ^index\.html$ index.php [R=301,L]
+</IfModule>
+
+# 디렉토리 인덱싱(목록 노출) 차단
+Options -Indexes
